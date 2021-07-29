@@ -2,8 +2,8 @@
 import logo from './logo.svg';
 import './App.css';
 import { useEffect, useState } from 'react';
-import { loadGoogleScript } from './GoogleLogin';
-import SimpleMap from './SimpleMap';
+import { loadGoogleScript } from './components/GoogleLogin';
+import SimpleMap from './components/SimpleMap';
 import {
   BrowserRouter as Router,
   Route,
@@ -14,7 +14,8 @@ import {
 
 //Pages
 import HomePage from "./pages"; ///< index.jsx will be automatically imported 
-import MapLocationsPage from './pages/maplocations';
+import SearchResultsPage from './pages/SearchResults';
+import ExperiencePage from './pages/Experience';
 
 const googleClientId = "153608278319-169t8o4mqbd6lpjhkuqh2lv2n8f2md5r.apps.googleusercontent.com" //process.env.REACT_APP_GOOGLE_CLIENT_ID;
 
@@ -105,16 +106,19 @@ function App() {
           </div>
         }
       </header>
-      <div>
+      <div className="page-body">
        <Router>
         {/*All our Routes goes here!*/}
           {/*<Route path="/" component={} />*/}
           <Route exact path="/" component={HomePage} />
-          <Route exact path="/maplocations" component={MapLocationsPage} />
+          <Route exact path="/searchresults" component={SearchResultsPage} />
+          <Route exact path="/experience" component={ExperiencePage} />
        </Router> 
-       {/* <SimpleMap /> */}
-       <img src={logo} className="App-logo" alt="logo" />
+       {/* footer goes here */}
       </div>
+      <footer>
+        <div>Insert footer here</div>
+      </footer>
     </div>
   );
 }
