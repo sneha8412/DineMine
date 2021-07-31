@@ -116,9 +116,9 @@ function App() {
        </Router> 
        {/* footer goes here */}
       </div>
-      <footer>
+      {/* <footer>
         <div>Insert footer here</div>
-      </footer>
+      </footer> */}
     </div>
   );
 }

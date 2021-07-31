@@ -6,12 +6,12 @@ import Marker from './Marker';
 const GOOGLE_MAP_API_KEY = 'AIzaSyCzeqra04D0wYBWiutQu3_XIwdCWWDwS8Q';
 
 
-const SimpleMap = () => {
-    const [center, setCenter] = useState({lat: 47.606209, lng: -122.332069 });
+const SimpleMap = (props) => {
+    const [center, setCenter] = useState(props.center);//{lat: 47.606209, lng: -122.332069 });
     const [zoom, setZoom] = useState(10);
 
     const getMapOptions = () => {
-        return {
+      return {
           disableDefaultUI: true,
           mapTypeControl: true,
           streetViewControl: true,
@@ -19,9 +19,37 @@ const SimpleMap = () => {
         };
       };
 
+      // const showMarkers = props.locations.map((location) => {
+      //   //console.log('sq-value:', sq.value);
+      //   //console.log('sq-id:', sq.id);
+      //     return (
+      //       <Marker
+      //         lat={location["lat"]}
+      //         lng={location["lng"]}
+      //         name="My Marker"
+      //         color="blue"
+      //       />
+      //     );
+      //   });
 
+    // const showMarkers = () => {
+    //   console.log("locations: " + props.locations); 
+
+    //   return (
+    //     props.locations.map((location) => 
+    //       <Marker
+    //         lat={location["lat"]}
+    //         lng={location["lng"]}
+    //         name="My Marker"
+    //         color="blue"
+    //       />
+    //     )
+    //   )
+    // }
+    
 
     return (
+
         <div style={{ height: '100vh', width: '100%' }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: GOOGLE_MAP_API_KEY }}
@@ -29,7 +57,18 @@ const SimpleMap = () => {
           defaultZoom={zoom}
           options={getMapOptions} // shows Satellite view options
         >
-          <Marker
+          {props.locations.map((location, i) => (
+            //if this is contained with {}, markers won't show up
+            <Marker
+            lat={location["lat"]}
+            lng={location["lng"]}
+            name="My Marker"
+            color="blue"
+            />
+          ))}
+        </GoogleMapReact>
+
+                {/* <Marker
             lat={47.530102}
             lng={-122.032616}
             name="My Marker"
@@ -40,9 +79,9 @@ const SimpleMap = () => {
             lng={-122.332069}
             name="My Marker 2"
             color="blue"
-          />
-        </GoogleMapReact>
+          /> */}
       </div>
+      
     );
 }
 
