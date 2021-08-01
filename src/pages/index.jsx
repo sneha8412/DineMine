@@ -16,7 +16,7 @@ const HomePage = () => {
       <Link to="/maplocations">Show Locations</Link>
       <SearchExperiences />
       <NearbyExperiences />
-      <ImageUpload upload_url="http://localhost:5000/upload" />
+      <ImageUpload upload_url="http://localhost:5000/images/upload" />
       <Geolocator />
     </div>
   );
