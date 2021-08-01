@@ -5,17 +5,18 @@ import SearchExperiences from "../components/SearchExperiences";
 import { Link } from "react-router-dom";
 import NearbyExperiences from "../components/NearbyExperiences";
 import Geolocator from "../components/Geolocator";
+import ImageUpload from "../components/ImageUpload";
 
 
 //Functional Component 
 const HomePage = () => {
   return (
     <div>
-      <h3>Welcome to the Dine Mine!</h3>
       <small>Start Here</small>
       <Link to="/maplocations">Show Locations</Link>
       <SearchExperiences />
       <NearbyExperiences />
+      <ImageUpload upload_url="http://localhost:5000/upload" />
       <Geolocator />
     </div>
   );
