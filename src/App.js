@@ -41,7 +41,7 @@ function App() {
         {/* search */}
 
       <div className="page-body">
-      <SearchForm/>
+      {/* <SearchForm/> */}
        <Router>
         {/*All our Routes goes here!*/}
           {/*<Route path="/" component={} />*/}
