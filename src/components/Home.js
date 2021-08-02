@@ -1,6 +1,6 @@
 import React from 'react';
-import './Home.css';
-//import Banner from './Banner'
+import './Banner.css';
+import Banner from './Banner';
 //import Card from './Card'
 
 // ES7 snippets to do 'rfce'
@@ -8,6 +8,7 @@ import './Home.css';
 function Home() {
     return (
         <div className='home'>
+            <Banner/>
             </div>
     )
 };
