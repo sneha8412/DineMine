@@ -19,6 +19,8 @@ import SearchResultsPage from './pages/SearchResults';
 import ExperiencePage from './pages/Experience';
 import NewHostForm from './pages/NewHostForm';
 import SearchForm from './components/SearchForm';
+import Header from './components/Header';
+//import Home from './components/Home';
 
 const googleClientId = "153608278319-169t8o4mqbd6lpjhkuqh2lv2n8f2md5r.apps.googleusercontent.com" //process.env.REACT_APP_GOOGLE_CLIENT_ID;
 
@@ -112,16 +114,12 @@ function App() {
   
   return (
     // home
+    
     <div className="App">
-      {/* home */}
-      {/* <Home/> */}
-      {/* header */}
-      <header className="App-header">
-      <h3 className='welcome'> Welcome to the Dine Mine!</h3>
-      <nav>
-        <button className="create-host"> Become a Host</button>     
-        </nav>
-
+      <Header/>
+      {/* <Home/>  */}
+      
+      <div>
         {!isLoggedIn &&
           <div id="google-signin"></div>
         }
@@ -136,7 +134,7 @@ function App() {
             <button className='btn-primary' onClick={logOut}>Log Out</button>
           </div>
         }
-      </header>
+      </div>
 
       {/* banner */}
         {/* search */}

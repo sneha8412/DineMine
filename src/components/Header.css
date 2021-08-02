@@ -11,7 +11,8 @@
   
   .header__icon {
     object-fit: contain;
-    height: 100px;
+    height: 10px;
+    font-weight: bold;
     margin-left: 20px;
   }
   
@@ -37,7 +38,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 15vw;
+    width: 20vw;
     margin-right: 80px;
   }
   
