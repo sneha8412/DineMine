@@ -1,6 +1,7 @@
 // Reference: https://www.quod.ai/post/how-to-integrate-google-api-into-your-react-app
 import logo from './logo.svg';
 import './App.css';
+import React from 'react';
 import { useEffect, useState } from 'react';
 import { loadGoogleScript } from './components/GoogleLogin';
 import Home from './components/Home' //check aagin (sneha)
