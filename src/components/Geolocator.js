@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react"
-import SimpleMap from './SimpleMap'
+import React, { useEffect, useState } from 'react';
+import SimpleMap from './SimpleMap';
 
 const Geolocator = props => { 
     

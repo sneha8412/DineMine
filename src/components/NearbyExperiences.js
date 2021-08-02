@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter, Route } from 'react-router-dom'
 import SearchResultsPage from '../pages/SearchResults';
-import { useHistory } from "react-router-dom";
+import { useHistory } from 'react-router-dom';
 
 const NearbyExperiences = () => {
     
