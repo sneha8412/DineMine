@@ -22,43 +22,60 @@ import SearchForm from './components/SearchForm';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import GoogleAuth from './components/GoogleAuth';
+import SearchPage from './components/SearchPage';
 //import Home from './components/Home';
 
-const googleClientId = "153608278319-169t8o4mqbd6lpjhkuqh2lv2n8f2md5r.apps.googleusercontent.com" //process.env.REACT_APP_GOOGLE_CLIENT_ID;
-
-// See: https://console.cloud.google.com/apis/credentials?project=aidacapstone1
 
 function App() {
   
   return (
     // home
     
-    <div className="App">
-      <Header/>
-        <GoogleAuth/>
+//     <div className="App">
+//       <Header/>
+//         <GoogleAuth/>
     
-      {/* banner */}
-        {/* search */}
+//       {/* banner */}
+//         {/* search */}
 
-      <div className="page-body">
-      {/* <SearchForm/> */}
-       <Router>
-        {/*All our Routes goes here!*/}
-          {/*<Route path="/" component={} />*/}
-          <Route exact path="/" component={HomePage} />
-          <Route exact path="/searchresults" component={SearchResultsPage} />
-          <Route exact path="/experience" component={ExperiencePage} />
-       </Router> 
-       {/* footer goes here */}
-      </div>
+//       <div className="page-body">
+//       {/* <SearchForm/> */}
+//        <Router>
+//         {/*All our Routes goes here!*/}
+//           {/*<Route path="/" component={} />*/}
+//           <Route exact path="/" component={HomePage} />
+//           <Route exact path="/searchresults" component={SearchResultsPage} />
+//           <Route exact path="/experience" component={ExperiencePage} />
+//        </Router> 
+//        {/* footer goes here */}
+//       </div>
 
-      {/* cards */}
+//       {/* cards */}
 
-       <Footer/>
+//        <Footer/>
        
       
-    </div>
-  );
+//     </div>
+//   );
+// }
+ // BEM
+ <div className="app">
+ <Router>
+   <Header />
+   
+   <Switch>
+     <Route path="/search">
+       <SearchPage />
+     </Route>
+     <Route path="/">
+       <Home />
+     </Route>
+   </Switch>
+   
+   <Footer />
+ </ Router>
+</div>
+);
 }
 
 export default App;

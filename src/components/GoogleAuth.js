@@ -4,6 +4,7 @@ import { loadGoogleScript } from './GoogleLogin';
 import GoogleLogin from './GoogleLogin';
 
 function GoogleAuth(){
+    // See: https://console.cloud.google.com/apis/credentials?project=aidacapstone1
     const googleClientId = "153608278319-169t8o4mqbd6lpjhkuqh2lv2n8f2md5r.apps.googleusercontent.com" //process.env.REACT_APP_GOOGLE_CLIENT_ID;
 
     const [gapi, setGapi] = useState();
