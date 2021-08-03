@@ -5,6 +5,7 @@ import LanguageIcon from "@material-ui/icons/Language";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { Avatar } from "@material-ui/core";
 import { Link } from "react-router-dom";
+import GoogleAuth from "./GoogleAuth";
 
 function Header() {
     return (
@@ -20,7 +21,8 @@ function Header() {
                 <p>Become a host</p>
                 <LanguageIcon />
                 <ExpandMoreIcon />
-                <Avatar />
+                {/* <Avatar /> */}
+                <GoogleAuth />
             </div>
         </div>
     )

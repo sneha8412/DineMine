@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { loadGoogleScript } from './GoogleLogin';
 // import logo from './logo.svg';
 import GoogleLogin from './GoogleLogin';
+import { Avatar } from "@material-ui/core";
+import "./GoogleAuth.css";
 
 function GoogleAuth(){
     // See: https://console.cloud.google.com/apis/credentials?project=aidacapstone1
@@ -78,11 +80,12 @@ function GoogleAuth(){
         
         {isLoggedIn &&
           <div className="signed-in-userinfo">
-            <div>
+            {/* <div>
               <img src={imageUrl} alt="google sign-in"/>
             </div>
             <div>{name}</div>
-            <div>{email}</div>
+            <div>{email}</div> */}
+            <Avatar alt={name} src={imageUrl} />
             <button className='btn-primary' onClick={logOut}>Log Out</button>
           </div>
         }
