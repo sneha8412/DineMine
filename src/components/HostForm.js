@@ -24,6 +24,8 @@ function HostForm() {
         let temp = { ...errors }
         if ('hostFullname' in fieldValues)
             temp.hostFullname = fieldValues.hostFullname ? "" : "This field is required."
+        if ('city' in fieldValues)
+            temp.city = fieldValues.city ? "" : "This field is required."
         if ('hostIntroduction' in fieldValues)
             temp.hostIntroduction = fieldValues.hostIntroduction ? "" : "This field is required."
         if ('hostEmail' in fieldValues)
@@ -93,7 +95,14 @@ function HostForm() {
                     value = {values.hostAddress}
                     onChange ={handleInputChange}
                     error ={errors.hostAddress}
-                    />  
+                    /> 
+
+                    <HostInput 
+                    label="City"
+                    name="city"
+                    value={values.city}
+                    onChange={handleInputChange}
+                    />
 
                     <HostInput 
                     name="hostImage"
@@ -104,11 +113,12 @@ function HostForm() {
                     />
 
                     <HostInput 
-                    label="City"
-                    name="city"
-                    value={values.city}
+                    label="Introduction"
+                    name="Introduction"
+                    value={values.hostIntroduction}
                     onChange={handleInputChange}
                     />
+                    
                 </Grid>
 
                 <Grid item xs = {6}>
