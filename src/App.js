@@ -67,6 +67,9 @@ function App() {
      <Route path="/search">
        <SearchPage />
      </Route>
+     <Route path="/newhost">
+       <NewHostForm />
+     </Route>
      <Route path="/">
        <Home />
      </Route>

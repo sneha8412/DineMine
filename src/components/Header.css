@@ -42,3 +42,10 @@
     margin-right: 80px;
   }
   
+  .becomeHost__interactive {
+    cursor: pointer;
+  }
+
+  .becomeHost__interactive:active {
+    border: 2px solid black;
+  }

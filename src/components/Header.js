@@ -6,8 +6,18 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { Avatar } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import GoogleAuth from "./GoogleAuth";
+import { useHistory } from "react-router-dom";
+import NewHostForm from '../pages/NewHostForm';
 
 function Header() {
+    
+    const history = useHistory();
+
+    const handleBecomeHostOnClick = () => {
+        history.push('/newhost');
+    };
+
+    
     return (
         <div className='header'>
             <p className="header__icon">DineMine</p>
@@ -18,7 +28,7 @@ function Header() {
             </div>
 
             <div className='header__right'>
-                <p>Become a host</p>
+                <div className="becomeHost__interactive" onClick={e => handleBecomeHostOnClick()}>Become a host</div>
                 <LanguageIcon />
                 <ExpandMoreIcon />
                 {/* <Avatar /> */}
