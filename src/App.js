@@ -17,47 +17,20 @@ import {
 import HomePage from "./pages"; ///< index.jsx will be automatically imported 
 import SearchResultsPage from './pages/SearchResults';
 import ExperiencePage from './pages/Experience';
-import NewHostForm from './pages/NewHostForm';
+// import NewHostForm from './components/NewHostForm';
 import SearchForm from './components/SearchForm';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import GoogleAuth from './components/GoogleAuth';
 import SearchPage from './components/SearchPage';
+import Host from './components/Host';
 //import Home from './components/Home';
 
 
 function App() {
   
   return (
-    // home
-    
-//     <div className="App">
-//       <Header/>
-//         <GoogleAuth/>
-    
-//       {/* banner */}
-//         {/* search */}
-
-//       <div className="page-body">
-//       {/* <SearchForm/> */}
-//        <Router>
-//         {/*All our Routes goes here!*/}
-//           {/*<Route path="/" component={} />*/}
-//           <Route exact path="/" component={HomePage} />
-//           <Route exact path="/searchresults" component={SearchResultsPage} />
-//           <Route exact path="/experience" component={ExperiencePage} />
-//        </Router> 
-//        {/* footer goes here */}
-//       </div>
-
-//       {/* cards */}
-
-//        <Footer/>
-       
-      
-//     </div>
-//   );
-// }
+  
  // BEM
  <div className="app">
  <Router>
@@ -68,7 +41,7 @@ function App() {
        <SearchPage />
      </Route>
      <Route path="/newhost">
-       <NewHostForm />
+       <Host />
      </Route>
      <Route path="/">
        <Home />

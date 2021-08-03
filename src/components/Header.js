@@ -1,13 +1,13 @@
 import React from 'react'
 import './Header.css'
 import SearchIcon from "@material-ui/icons/Search";
-import LanguageIcon from "@material-ui/icons/Language";
+//import LanguageIcon from "@material-ui/icons/Language";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { Avatar } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import GoogleAuth from "./GoogleAuth";
 import { useHistory } from "react-router-dom";
-import NewHostForm from '../pages/NewHostForm';
+import NewHostForm from './NewHostForm';
 
 function Header() {
     
@@ -29,7 +29,7 @@ function Header() {
 
             <div className='header__right'>
                 <div className="becomeHost__interactive" onClick={e => handleBecomeHostOnClick()}>Become a host</div>
-                <LanguageIcon />
+                {/* <LanguageIcon /> */}
                 <ExpandMoreIcon />
                 {/* <Avatar /> */}
                 <GoogleAuth />
