@@ -11,7 +11,7 @@ const useStyles = makeStyles(theme => ({
     }
 }))
 
-export default function HostFormButton(props) {
+export default function FormButton(props) {
 
     const { text, size, color, variant, onClick, ...other } = props
     const classes = useStyles();

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { FormControlLabel, Grid } from '@material-ui/core';
-import { useForm, Form } from './UseForm';
-import RadioGroup from './HostRadioGroup';
-import HostInput from './HostInput'
-import HostFormButton from './HostFormButton';
+import { useForm, Form } from '../UseForm';
+import RadioGroup from './RadioGroup';
+import Input from './Input'
+import FormButton from './FormButton';
 
 const initialFValues = {
     hostFullname: '',
@@ -65,7 +65,7 @@ function HostForm() {
             <Grid container>
                 <Grid item xs={6}>
 
-                    <HostInput
+                    <Input
                     name ="hostFullname"
                     label ="Full name"
                     value = {values.hostFullname}
@@ -73,7 +73,7 @@ function HostForm() {
                     error = {errors.hostFullname}
                     />
 
-                    <HostInput 
+                    <Input 
                     name="hostEmail"
                     label ="Email"
                     value = {values.hostEmail}
@@ -81,7 +81,7 @@ function HostForm() {
                     onChange ={handleInputChange}
                     />
                     
-                    <HostInput
+                    <Input
                     name="hostPhone"
                     label ="Phone no."
                     onChange = {handleInputChange}
@@ -89,7 +89,7 @@ function HostForm() {
                     error ={errors.hostPhone}
                     />
 
-                    <HostInput
+                    <Input
                     name="hostAddress"
                     label ="Address"
                     value = {values.hostAddress}
@@ -97,14 +97,14 @@ function HostForm() {
                     error ={errors.hostAddress}
                     /> 
 
-                    <HostInput 
+                    <Input 
                     label="City"
                     name="city"
                     value={values.city}
                     onChange={handleInputChange}
                     />
 
-                    <HostInput 
+                    <Input 
                     name="hostImage"
                     label ="Upload display picture"
                     value = {values.hostImage}
@@ -112,7 +112,7 @@ function HostForm() {
                     error ={errors.hostImage}
                     />
 
-                    <HostInput 
+                    <Input 
                     label="Introduction"
                     name="Introduction"
                     value={values.hostIntroduction}
@@ -132,10 +132,10 @@ function HostForm() {
                         />
                 
                     <div>
-                        <HostFormButton
+                        <FormButton
                             type="submit"
                             text="Submit" />
-                        <HostFormButton
+                        <FormButton
                             text="Reset"
                             color="default"
                             onClick={resetForm} />

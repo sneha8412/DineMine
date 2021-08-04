@@ -5,18 +5,12 @@ import React, { useEffect, useState } from 'react';
 import { loadGoogleScript } from './components/GoogleLogin';
 import Home from './components/Home' //check aagin (sneha)
 import SimpleMap from './components/SimpleMap';
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Link,
-  Redirect
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Link, Redirect} from "react-router-dom";
 
 //import Pages
 import HomePage from "./pages"; ///< index.jsx will be automatically imported 
 import SearchResultsPage from './pages/SearchResults';
-import ExperiencePage from './pages/Experience';
+import Experience from './components/Experience';
 // import NewHostForm from './components/NewHostForm';
 import SearchForm from './components/SearchForm';
 import Header from './components/Header';
@@ -42,6 +36,9 @@ function App() {
      </Route>
      <Route path="/newhost">
        <Host />
+     </Route>
+     <Route path="/newhost/newexperience">
+       <Experience/>
      </Route>
      <Route path="/">
        <Home />
