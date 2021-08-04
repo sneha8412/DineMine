@@ -1,15 +1,13 @@
-import React from 'react'
+import React, { useState }from 'react'
 import './Header.css'
 import SearchIcon from "@material-ui/icons/Search";
-//import LanguageIcon from "@material-ui/icons/Language";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import { Avatar } from "@material-ui/core";
-import { Link } from "react-router-dom";
+import DropDownMenu from './DropDownMenu';
 import GoogleAuth from "./google/GoogleAuth";
 import { useHistory } from "react-router-dom";
-import NewHostForm from './NewHostForm';
 
-function Header() {
+
+function Header(props) {
     
     const history = useHistory();
 
@@ -20,6 +18,8 @@ function Header() {
     const handleDineMineOnClick =() => {
         history.push('/');
     }
+
+    const [open, setOpen] = useState(false);
 
     
     return (
@@ -32,10 +32,12 @@ function Header() {
             </div>
 
             <div className='header__right'>
-                <div className="becomeHost__interactive" onClick={e => handleBecomeHostOnClick()}>Become a host</div>
+                <div className="becomeHost__interactive" onClick={handleBecomeHostOnClick}>Become a host</div>
                 {/* <LanguageIcon /> */}
-                <ExpandMoreIcon />
-                {/* <Avatar /> */}
+                <ExpandMoreIcon >
+                  <DropDownMenu/>
+                </ExpandMoreIcon>
+               
                 <GoogleAuth />
             </div>
         </div>
