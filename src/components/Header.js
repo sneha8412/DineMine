@@ -5,7 +5,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { Avatar } from "@material-ui/core";
 import { Link } from "react-router-dom";
-import GoogleAuth from "./GoogleAuth";
+import GoogleAuth from "./google/GoogleAuth";
 import { useHistory } from "react-router-dom";
 import NewHostForm from './NewHostForm';
 

@@ -1,21 +1,11 @@
 import React from 'react';
 import PeopleOutlineTwoToneIcon from '@material-ui/icons/PeopleOutlineTwoTone';
 import { Paper,makeStyles } from '@material-ui/core';
-import Header from './Header';
 import HostForm from './forms/HostForm';
 import Experience from './Experience';
-import ExperienceForm from './forms/ExperienceForm';
 import { useHistory } from "react-router-dom";
+import {BrowserRouter as Router,Route,Switch,Link,Redirect} from "react-router-dom";
 //parent component for hostform
-import {
-    BrowserRouter as Router,
-    Route,
-    Switch,
-    Link,
-    Redirect
-  } from "react-router-dom";
-
-
 
 
 const useStyles = makeStyles(theme => ({

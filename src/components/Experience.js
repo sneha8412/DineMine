@@ -16,8 +16,6 @@ const useStyles = makeStyles(theme => ({
 
 function Experience(){
 
-    
-
     return (
         
         <Paper>

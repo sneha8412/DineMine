@@ -23,7 +23,7 @@ function Banner() {
                 <h5>
                 Choose from a variety of Cuisines and dining experiences
                 </h5>
-                <Button onClick={() => history.push('/search')} variant='outlined'>Explore Nearby</Button>
+                <Button onClick={() => history.push('/search')} variant='outlined'>Dine Nearby</Button>
             </div>
         </div>
     )

@@ -2,23 +2,19 @@
 import logo from './logo.svg';
 import './App.css';
 import React, { useEffect, useState } from 'react';
-import { loadGoogleScript } from './components/GoogleLogin';
+import { loadGoogleScript } from './components/google/GoogleLogin';
 import Home from './components/Home' //check aagin (sneha)
-import SimpleMap from './components/SimpleMap';
+//import SimpleMap from './components/SimpleMap';
 import { BrowserRouter as Router, Route, Switch, Link, Redirect} from "react-router-dom";
 
 //import Pages
 import HomePage from "./pages"; ///< index.jsx will be automatically imported 
 import SearchResultsPage from './pages/SearchResults';
 import Experience from './components/Experience';
-// import NewHostForm from './components/NewHostForm';
-import SearchForm from './components/SearchForm';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import GoogleAuth from './components/GoogleAuth';
 import SearchPage from './components/SearchPage';
 import Host from './components/Host';
-//import Home from './components/Home';
 
 
 function App() {

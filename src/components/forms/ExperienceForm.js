@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FormControlLabel, Grid } from '@material-ui/core';
-import { useForm, Form } from '../UseForm';
+import { useForm, Form } from './UseForm';
 import RadioGroup from './RadioGroup';
 import Input from './Input'
 import FormButton from './FormButton';
