@@ -14,6 +14,7 @@ function SearchPage() {
                 <Button variant="outlined">Price</Button>
                 <Button variant="outlined">Dine Times</Button>
                 <Button variant="outlined">Location</Button>
+                <Button variant="outlined">View on Map</Button>
             </div>
             <SearchResult
                 img="https://images.unsplash.com/photo-1573225342350-16731dd9bf3d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=957&q=80"

@@ -33,7 +33,14 @@
     outline-width: 0;
     /* width: 250px; */
   }
-  
+  .header__icon{
+    cursor: pointer;
+  }
+  .header__icon:active {
+    border: 2px solid white; 
+    
+  }
+
   .header__right {
     display: flex;
     align-items: center;
@@ -47,5 +54,6 @@
   }
 
   .becomeHost__interactive:active {
-    border: 2px solid black;
+    border: 2px solid white; 
+    
   }

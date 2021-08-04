@@ -15,12 +15,16 @@ function Header() {
 
     const handleBecomeHostOnClick = () => {
         history.push('/newhost');
-    };
+    }
+
+    const handleDineMineOnClick =() => {
+        history.push('/');
+    }
 
     
     return (
         <div className='header'>
-            <p className="header__icon">DineMine</p>
+            <div className="header__icon"onClick={e => handleDineMineOnClick()}>DineMine</div>
            
             <div className='header__center'>
                 <input type="text" />
