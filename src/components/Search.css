@@ -36,12 +36,12 @@
     left: 0;
     top: 480px;
     text-transform: inherit !important;
-    background-color: #ff7779;
+    background-color: #f2a20e;
     color: white;
     width: 579px;
   }
 
 .search > button:hover {
     background-color: white;
-    color: #ff7779;
+    color: #f2a20e;
 }
