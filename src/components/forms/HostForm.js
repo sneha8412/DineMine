@@ -5,6 +5,9 @@ import RadioGroup from './RadioGroup';
 import Input from './Input'
 import FormButton from './FormButton';
 import { createNewHost } from '../../services/hostService';
+import ImageUpload from '../../components/ImageUpload'
+
+import axios from "axios";
 
 const initialFValues = {
     hostFullname: '',
@@ -13,13 +16,14 @@ const initialFValues = {
     hostAddress: '',
     hostImage: null,
     hostEmail:'',
-    CertifiedKitchen: false,
-    city: ''
+    hostCity: ''
 
 }
 
 
 function HostForm() {
+
+    const [imageUploadUrl, setImageUploadUrl] = useState("");
 
     const validate = (fieldValues = values) => {
         let temp = { ...errors }
@@ -57,18 +61,58 @@ function HostForm() {
         if (validate()){
             // employeeService.insertEmployee(values)
 
-            // Call backend api to upload image 
-            //createNewHost()
-            
-            resetForm()
+            // create host json object to send to backend
+            const host = { 
+                "name": values.hostFullname,
+                "address": values.hostAddress,
+                "intro": values.hostIntroduction,
+                "city": values.hostCity,
+                "phone": values.hostPhone,
+                "email": values.hostEmail
+            }
+
+            axios.post(`http://localhost:5000/hosts`, host)
+              
+                .then((response) => {
+
+                    console.log(response.data, '!');
+                    const host_id = response.data["host_id"];
+                    console.log("form submit handler" + host_id);
+                    setImageUploadUrl(`http://localhost:5000/images/host/${host_id}/upload`);
+                    resetForm();
+
+                }, 
+                (error) => {
+                    console.log(error);
+                });
         }
     }
 
+    // const handleHostImageUpload = e => {
+
+    //     e.preventDefault();
+
+    //     if (values.hostImage)
+    //     {   
+    //        const img_upload_url = `http://localhost:5000/images/host/${hostId}/upload`;
+           
+    //        axios.post(img_upload_url, { "pic": `${values.hostImage}` })
+    //        .then((response) => {
+    //          console.log(response.data, '!');
+             
+    //        }, (error) => {
+    //          console.log(error);
+    //        });
+    //     }
+
+    // }
+
 
     return(
+        <div>
         <Form onSubmit={handleSubmit}>
             <Grid container>
-                <Grid item xs={6}>
+                <Grid item xs={7}>
 
                     <Input
                     name ="hostFullname"
@@ -104,53 +148,80 @@ function HostForm() {
 
                     <Input 
                     label="City"
-                    name="city"
-                    value={values.city}
+                    name="hostCity"
+                    value={values.hostCity}
                     onChange={handleInputChange}
                     />
 
-                    <Input 
+                    {/* <Input 
                     name="hostImage"
                     label ="Upload display picture"
                     value = {values.hostImage}
                     onChange ={handleInputChange}
                     error ={errors.hostImage}
-                    />
+                    /> */}
 
                     <Input 
                     label="Introduction"
-                    name="Introduction"
+                    name="hostIntroduction"
                     value={values.hostIntroduction}
                     onChange={handleInputChange}
                     />
                     
                 </Grid>
 
-                <Grid item xs = {6}>
+                <Grid item xs = {2}>
                     
-                        <RadioGroup 
+                        {/* <RadioGroup 
                         name = "CertifiedKitchen"
                         lable = "Kitchen Certified for commercial cooking? "
                         value = {values.CertifiedKitchen}
                         onChange = {handleInputChange} 
                         items={false}
-                        />
+                        /> */}
                 
-                    <div>
+          
                         <FormButton
                             type="submit"
-                            text="Submit" />
+                            text="Submit" 
+                            onClick={handleSubmit}/>
                         <FormButton
                             text="Reset"
                             color="default"
                             onClick={resetForm} />
-                    </div>
                  
                 </Grid> 
                 
             </Grid>
 
         </Form>
+
+         {/* <Form>
+                <Grid container>
+                    <Grid item xs={3}>
+                    <Input 
+                        name="hostImage"
+                        label ="Upload display picture"
+                        value = {values.hostImage}
+                        onChange ={handleInputChange}
+                        error ={errors.hostImage}
+                        />
+                    <FormButton
+                        type="file"
+                        text="Select image" 
+                        onClick={handleHostImageUpload}/>
+                    <FormButton
+                        type="submit"
+                        text="Upload Image" 
+                        onClick={handleHostImageUpload}/>
+                    </Grid>
+                </Grid>
+          </Form> */}
+
+
+        <ImageUpload upload_url={imageUploadUrl} />
+        </div>
+        
     )
 };
 
