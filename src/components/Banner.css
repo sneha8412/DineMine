@@ -2,17 +2,16 @@
     background: url("https://images.unsplash.com/photo-1576867757603-05b134ebc379?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80") center center;
     height: 50vh;
     position: relative;
-    max-width:100%
   }
   
   .banner__info {
-      background-color: black;
+      background-color: rgba(0, 0, 0, 0.392);
       color: white;
-      padding-top: 25vh;
+      padding-top: 10vh;
       padding-left: 50px;
       padding-right: 50px;
       padding-bottom: 40px;
-      width: 300px;
+      width: 210px;
   }
   
   .banner__search {
