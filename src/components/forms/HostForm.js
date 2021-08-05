@@ -4,6 +4,7 @@ import { useForm, Form } from './UseForm';
 import RadioGroup from './RadioGroup';
 import Input from './Input'
 import FormButton from './FormButton';
+import { createNewHost } from '../../services/hostService';
 
 const initialFValues = {
     hostFullname: '',
@@ -55,6 +56,10 @@ function HostForm() {
         e.preventDefault()
         if (validate()){
             // employeeService.insertEmployee(values)
+
+            // Call backend api to upload image 
+            //createNewHost()
+            
             resetForm()
         }
     }
