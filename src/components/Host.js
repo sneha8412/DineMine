@@ -6,6 +6,7 @@ import Experience from './Experience';
 import { useHistory } from "react-router-dom";
 import {BrowserRouter as Router,Route,Switch,Link,Redirect} from "react-router-dom";
 //parent component for hostform
+import ExperienceForm from './forms/ExperienceForm'
 
 
 const useStyles = makeStyles(theme => ({
@@ -20,37 +21,11 @@ function Host(){
 
     const history = useHistory();
 
-    const handleExperienceOnClick = () => {
-        history.push('/newhost/newexperience');
-    };
-
     return (
-        <>
-        {/* <Header
-            title="Create a host profile"
-            icon={<PeopleOutlineTwoToneIcon fontSize="large" />}
-        /> */}
-        <Paper className="newHost__formDiaplay">
+        <Paper elevation={5} className="newHost__formDisplay">
             <h1 > Create a host profile </h1>
             <HostForm />
-
-            
-            <div className='header__right'>
-                <div className="createExperience__interactive" onClick={e => handleExperienceOnClick()}>
-                    <h1> List a new Experience</h1>
-                </div>
-            </div>
-            <Router>
-                <Switch>
-                    <Route path="/newhost/newexperience">
-                    <Experience/>
-                    </Route>
-                </Switch>
-            </Router>  
-        {/* problem */}
-             
         </Paper>
-    </>
     )
 }
 export default Host;

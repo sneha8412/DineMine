@@ -6,7 +6,7 @@ import Input from './Input'
 import FormButton from './FormButton';
 import { createNewHost } from '../../services/hostService';
 import ImageUpload from '../../components/ImageUpload'
-
+import { useHistory } from 'react-router-dom';
 import axios from "axios";
 
 const initialFValues = {
@@ -14,7 +14,6 @@ const initialFValues = {
     hostPhone: '',
     hostIntroduction: '',
     hostAddress: '',
-    hostImage: null,
     hostEmail:'',
     hostCity: ''
 
@@ -25,20 +24,24 @@ function HostForm() {
 
     const [imageUploadUrl, setImageUploadUrl] = useState("");
 
+    const history = useHistory();
+
+    const [hostId, setHostId] = useState("");
+
     const validate = (fieldValues = values) => {
         let temp = { ...errors }
         if ('hostFullname' in fieldValues)
             temp.hostFullname = fieldValues.hostFullname ? "" : "This field is required."
         if ('city' in fieldValues)
-            temp.city = fieldValues.city ? "" : "This field is required."
+            temp.city =fieldValues.city ? "" : "This field is required."
         if ('hostIntroduction' in fieldValues)
             temp.hostIntroduction = fieldValues.hostIntroduction ? "" : "This field is required."
         if ('hostEmail' in fieldValues)
             temp.hostEmail = (/$^|.+@.+..+/).test(fieldValues.hostEmail) ? "" : "Email is not valid."
         if ('hostPhone' in fieldValues)
             temp.hostPhone = fieldValues.hostPhone.length > 9 ? "" : "Minimum 10 numbers required."
-        if ('CertifiedKitchen' in fieldValues)
-            temp.CertifiedKitchen = fieldValues.CertifiedKitchen != false ? "" : "You must have a certified Kitchen."
+        // if ('CertifiedKitchen' in fieldValues)
+        //     temp.CertifiedKitchen = fieldValues.CertifiedKitchen != false ? "" : "You must have a certified Kitchen."
         setErrors({
             ...temp
         })
@@ -58,6 +61,18 @@ function HostForm() {
 
     const handleSubmit = e => {
         e.preventDefault()
+        
+        // TODO remove after fxiing
+        history.push({
+            pathname: "/hostprofile",
+            state: { 
+                hostImageUploadUrl: `http://localhost:5000/images/host/18/upload`,
+                hostId: 18
+            }
+        });
+
+        // TOOD remove
+        
         if (validate()){
             // employeeService.insertEmployee(values)
 
@@ -78,8 +93,17 @@ function HostForm() {
                     console.log(response.data, '!');
                     const host_id = response.data["host_id"];
                     console.log("form submit handler" + host_id);
-                    setImageUploadUrl(`http://localhost:5000/images/host/${host_id}/upload`);
-                    resetForm();
+                    //setHostId(host_id);
+                    //setImageUploadUrl(`http://localhost:5000/images/host/${host_id}/upload`);
+                    //resetForm();
+
+                    history.push({
+                        pathname: "/hostprofile",
+                        state: { 
+                            hostImageUploadUrl: `http://localhost:5000/images/host/${host_id}/upload`,
+                            hostId: host_id 
+                        }
+                    });
 
                 }, 
                 (error) => {
@@ -153,14 +177,6 @@ function HostForm() {
                     onChange={handleInputChange}
                     />
 
-                    {/* <Input 
-                    name="hostImage"
-                    label ="Upload display picture"
-                    value = {values.hostImage}
-                    onChange ={handleInputChange}
-                    error ={errors.hostImage}
-                    /> */}
-
                     <Input 
                     label="Introduction"
                     name="hostIntroduction"
@@ -219,7 +235,8 @@ function HostForm() {
           </Form> */}
 
 
-        <ImageUpload upload_url={imageUploadUrl} />
+        <ImageUpload imageUploadUrl={imageUploadUrl} /> 
+        {/* need to pass in data that is not hard coded */}
         </div>
         
     )

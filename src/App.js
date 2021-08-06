@@ -15,6 +15,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import SearchPage from './components/SearchPage';
 import Host from './components/Host';
+import HostProfile from './components/HostProfile';
 
 
 function App() {
@@ -33,8 +34,11 @@ function App() {
      <Route path="/newhost">
        <Host />
      </Route>
-     <Route path="/newhost/newexperience">
-       <Experience/>
+     <Route path="/hostprofile">
+       <HostProfile />
+     </Route>
+     <Route path="/experience">
+       <Experience />
      </Route>
      <Route path="/">
        <Home />

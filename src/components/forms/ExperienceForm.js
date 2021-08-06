@@ -21,16 +21,16 @@ function ExperienceForm() {
         let temp = { ...errors }
         if ('title' in fieldValues)
             temp.title= fieldValues.title ? "" : "This field is required."
-        if ('price' in fieldValues)
+        if ('price $' in fieldValues)
             temp.price = fieldValues.price < 0.00 ? "": "This field is required." //problem
         if ('description' in fieldValues)
             temp.hdescription = fieldValues.description ? "" : "This field is required."
         if ('cuisine' in fieldValues)
             temp.cuisine = fieldValues.cuisine? "" : "Cuisine is not valid." //dropdown
         if ('dinetime' in fieldValues)
-            temp.dinetime = fieldValues.dinetime ? "" : "Enter: Breakfast, Brunch, lunch, tea time, Dinner."
-        if ('images' in fieldValues)
-            temp.images = fieldValues.images != null ? "" : "You must upload at least 5 images."//problem
+            temp.dinetime = fieldValues.dinetime ? "" : "Enter one: Breakfast, Brunch, lunch, tea time, Dinner."
+        // if ('images' in fieldValues)
+        //     temp.images = fieldValues.images != null ? "" : "You must upload at least 5 images."//problem
         setErrors({
             ...temp
         })
@@ -101,27 +101,27 @@ function ExperienceForm() {
                     onChange={handleInputChange}
                     />
 
-                    <Input 
+                    {/* <Input 
                     name="image"
                     label ="Upload at least 5 pictures"
                     value = {values.image}
                     onChange ={handleInputChange}
                     error ={errors.image} //problem
-                    />
+                    /> */}
 
                     
                 </Grid>
 
                 <Grid item xs = {6}>
                     
-                        <RadioGroup 
+                        {/* <RadioGroup 
                         name = "CertifiedKitchen"
                         lable = "Kitchen Certified for commercial cooking? "
                         value = {values.CertifiedKitchen}
                         onChange = {handleInputChange} 
                         items={false}
                         /> 
-                        {/* problem */}
+                        */}
                 
                     <div>
                         <FormButton
