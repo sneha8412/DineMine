@@ -29,7 +29,7 @@ const HostProfile = (props) => {
     const hostImageUrl = `${BASE_URL}/${location.state.hostId}`;
 
     return (
-        <Paper className="ewHost__formDisplay">
+        <Paper elevation={5} className="ewHost__formDisplay">
             <div className="Host__Details">
                 <h1>Host Profile</h1>
                 <HostDetails hostId={location.state.hostId} />
