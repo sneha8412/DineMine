@@ -1,17 +1,10 @@
 import React, { useState } from 'react';
-import PeopleOutlineTwoToneIcon from '@material-ui/icons/PeopleOutlineTwoTone';
 import { Paper,makeStyles } from '@material-ui/core';
-import HostForm from './forms/HostForm';
-import Experience from './Experience';
 import { useHistory } from "react-router-dom";
-import {BrowserRouter as Router,Route,Switch,Link,Redirect} from "react-router-dom";
-//parent component for hostform
 import ExperienceForm from './forms/ExperienceForm'
 import ImageUpload from './ImageUpload';
 import './HostProfile.css';
 import HostDetails from './HostDetails';
-import axios from "axios";
-
 import { useLocation } from 'react-router-dom';
 
 
@@ -29,20 +22,17 @@ const HostProfile = (props) => {
     const history = useHistory();
     const location = useLocation();
 
-    const [hostImageDownloadUrl, setHostImageDownloadUrl] = useState("");
-
     console.log("hostImageUploadUrl: " + location.state.hostImageUploadUrl); 
 
     console.log("host-image-download-url " + `${BASE_URL}/${location.state.hostId}`);
 
-    //setHostImageDownloadUrl(`${BASE_URL}/${location.state.hostImageUploadUrl}`);
     const hostImageUrl = `${BASE_URL}/${location.state.hostId}`;
 
     return (
         <Paper className="newHost__formDiaplay">
             <div>
                 <h1>Host Profile</h1>
-                <HostDetails host_id={props.hostId} />
+                <HostDetails hostId={location.state.hostId} />
             </div>
             <div>
                 <h1>Upload Host Profile Image</h1>

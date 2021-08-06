@@ -50,7 +50,7 @@ const ImageUpload = (props) => {
 
   return (
     <div>
-        <form onSubmit={handleImageUpload} enctype="multipart/form-data" method="POST"> 
+        <form onSubmit={handleImageUpload} encType="multipart/form-data" method="POST"> 
         <input type="file" name="pic" onChange={handlePickFile} />
         <input type="submit" value="Upload a file"/>
         </form>
