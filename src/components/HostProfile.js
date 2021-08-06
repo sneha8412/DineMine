@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Paper, makeStyles } from '@material-ui/core';
 import { useHistory } from "react-router-dom";
 import ExperienceForm from './forms/ExperienceForm'
@@ -22,11 +22,27 @@ const HostProfile = (props) => {
     const history = useHistory();
     const location = useLocation();
 
+    const [hostImageUrl, setHostImageUrl] = useState("");
+    const [currentHostId, setCurrentHostId] = useState("");
+
     console.log("hostImageUploadUrl: " + location.state.hostImageUploadUrl); 
 
     console.log("host-image-download-url " + `${BASE_URL}/${location.state.hostId}`);
 
-    const hostImageUrl = `${BASE_URL}/${location.state.hostId}`;
+    //const hostImageUrl = `${BASE_URL}/${location.state.hostId}`;
+
+    useEffect(() => {
+        if (location?.state?.hostId){
+            setCurrentHostId(`${location.state.hostId}`);
+            setHostImageUrl(`${BASE_URL}/${location.state.hostId}`);
+        }
+    }, [location.state.hostId]);
+
+    const getHostImageUrls = () => {
+        //const hostImg = `${BASE_URL}/${location.state.hostId}`;
+        console.log("getHostImages called: " + hostImageUrl);
+        return [hostImageUrl];
+    };
 
     return (
         <Paper elevation={5} className="ewHost__formDisplay">
@@ -37,8 +53,7 @@ const HostProfile = (props) => {
 
             <div className="Host__PhotoUpload">
                 <h1>Upload Host Profile Image</h1>
-                <ImageUpload imageUploadUrl={location.state.hostImageUploadUrl}/>
-                <img className="host-image-size" src={hostImageUrl} />
+                <ImageUpload imageUploadUrl={location.state.hostImageUploadUrl} getImageUrls={getHostImageUrls}/>
             </div>
 
             <div className="your__experiences">

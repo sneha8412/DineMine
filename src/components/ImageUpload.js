@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import SimpleMap from '../components/SimpleMap';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
@@ -8,9 +8,11 @@ import axios from 'axios';
 const ImageUpload = (props) => {
 
   const [imageFile, setImageFile] = useState({});
+  const [uploadedImageId, setUploadedImageId] = useState("");
+  const [imageDownloadUrls, setImageDownloadUrls] = useState([]);
 
-  //const imageUploadUrl = props.imageUploadUrl; //`http://localhost:5000/images/host/${props.host_id}/upload`;
-  
+  // const imageUploadUrl = props.imageUploadUrl; //`http://localhost:5000/images/host/${props.host_id}/upload`;
+
   const handleImageUpload = (e) => {
     e.preventDefault();
     console.log("imageupload component form submit" + e);
@@ -30,7 +32,7 @@ const ImageUpload = (props) => {
         console.log(response.data, '!');
         const img_id = response.data["img_id"];
         console.log("image_id uploaded: " + img_id);
-
+        setUploadedImageId(img_id);
     }, 
     (error) => {
         console.log(error);
@@ -47,6 +49,28 @@ const ImageUpload = (props) => {
     }
   };
 
+  useEffect(() => {
+    if (props.getImageUrls)
+    {
+      const imageUrls = props.getImageUrls();
+      setImageDownloadUrls(imageUrls);
+    }
+  }, [props.getImageUrls]);
+
+  const renderImages = () => {
+    if (imageDownloadUrls)
+    {
+      return imageDownloadUrls.map((imgUrl) => {
+        let imgHash = Date.now();
+        let imgLink = `${imgUrl}?${imgHash}`;
+        return (<img key={imgLink} className="image-size" src={imgLink} />);
+      });
+    }
+    else
+    {
+      <div />
+    }
+  }
 
   return (
     <div>
@@ -54,6 +78,9 @@ const ImageUpload = (props) => {
         <input type="file" name="pic" onChange={handlePickFile} />
         <input type="submit" value="Upload a file"/>
         </form>
+        <div>
+          {renderImages()}
+        </div>
     </div>
   );
 };
