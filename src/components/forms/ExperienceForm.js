@@ -60,7 +60,7 @@ function ExperienceForm() {
     return(
         <Form onSubmit={handleSubmit}>
             <Grid container>
-                <Grid item xs={6}>
+                <Grid item xs={8}>
 
                     <Input
                     name ="title"
@@ -112,7 +112,7 @@ function ExperienceForm() {
                     
                 </Grid>
 
-                <Grid item xs = {6}>
+                <Grid item xs = {4}>
                     
                         {/* <RadioGroup 
                         name = "CertifiedKitchen"

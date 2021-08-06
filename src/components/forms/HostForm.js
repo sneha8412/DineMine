@@ -162,6 +162,7 @@ function HostForm() {
                     error ={errors.hostPhone}
                     />
 
+                   
                     <Input
                     name="hostAddress"
                     label ="Address"
@@ -169,6 +170,7 @@ function HostForm() {
                     onChange ={handleInputChange}
                     error ={errors.hostAddress}
                     /> 
+                  
 
                     <Input 
                     label="City"
@@ -186,7 +188,7 @@ function HostForm() {
                     
                 </Grid>
 
-                <Grid item xs = {2}>
+                <Grid item xs = {4}>
                     
                         {/* <RadioGroup 
                         name = "CertifiedKitchen"
