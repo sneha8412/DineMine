@@ -55,10 +55,20 @@ function HostDetails(props) {
     return (
         <div>
             <div>Name: {hostDetails["name"]}</div>
+            <br/>
+    
             <div>Address: {hostDetails["address"]}</div>
+            <br/>
+
             <div>City: {hostDetails["city"]}</div>
+            <br/>
+
             <div>Email: {hostDetails["email"]}</div>
+            <br/>
+
             <div>Introduction: {hostDetails["intro"]}</div>
+            <br/>
+            
             <div>Phone: {hostDetails["phone"]}</div>
         </div>
     );

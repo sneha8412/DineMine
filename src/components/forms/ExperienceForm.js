@@ -96,7 +96,7 @@ function ExperienceForm() {
 
                     <Input 
                     name="dinetime"
-                    label="Dine time"
+                    label="Dine time - Enter: Breakfast, Brunch, Lunch, Tea-Time, or Dinner"
                     value={values.dinetime}
                     onChange={handleInputChange}
                     />

@@ -235,7 +235,7 @@ function HostForm() {
           </Form> */}
 
 
-        <ImageUpload imageUploadUrl={imageUploadUrl} /> 
+        {/* <ImageUpload imageUploadUrl={imageUploadUrl} />  */}
         {/* need to pass in data that is not hard coded */}
         </div>
         

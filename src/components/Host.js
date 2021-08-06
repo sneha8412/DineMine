@@ -1,8 +1,7 @@
 import React from 'react';
-import PeopleOutlineTwoToneIcon from '@material-ui/icons/PeopleOutlineTwoTone';
+import './Host.css';
 import { Paper,makeStyles } from '@material-ui/core';
 import HostForm from './forms/HostForm';
-import Experience from './Experience';
 import { useHistory } from "react-router-dom";
 import {BrowserRouter as Router,Route,Switch,Link,Redirect} from "react-router-dom";
 //parent component for hostform

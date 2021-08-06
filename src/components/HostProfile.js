@@ -29,21 +29,24 @@ const HostProfile = (props) => {
     const hostImageUrl = `${BASE_URL}/${location.state.hostId}`;
 
     return (
-        <Paper className="newHost__formDisplay">
-            <div>
+        <Paper className="ewHost__formDisplay">
+            <div className="Host__Details">
                 <h1>Host Profile</h1>
                 <HostDetails hostId={location.state.hostId} />
             </div>
-            <div>
+
+            <div className="Host__PhotoUpload">
                 <h1>Upload Host Profile Image</h1>
                 <ImageUpload imageUploadUrl={location.state.hostImageUploadUrl}/>
                 <img className="host-image-size" src={hostImageUrl} />
             </div>
-            <div>
+
+            <div className="your__experiences">
                 <h1>Your Experiences</h1>
                 {/* <HostExperienceList /> */}
             </div>
-            <div >
+
+            <div className="list__NewExperience">
                 <h1> List a new Experience</h1>
                 <ExperienceForm />
             </div>
