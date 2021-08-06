@@ -63,13 +63,13 @@ function HostForm() {
         e.preventDefault()
         
         // TODO remove after fxiing
-        history.push({
-            pathname: "/hostprofile",
-            state: { 
-                hostImageUploadUrl: `http://localhost:5000/images/host/18/upload`,
-                hostId: 18
-            }
-        });
+        // history.push({
+        //     pathname: "/hostprofile",
+        //     state: { 
+        //         hostImageUploadUrl: `http://localhost:5000/images/host/18/upload`,
+        //         hostId: 18
+        //     }
+        // });
 
         // TOOD remove
         
