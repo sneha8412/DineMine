@@ -1,9 +1,10 @@
-import React from 'react';
-import PeopleOutlineTwoToneIcon from '@material-ui/icons/PeopleOutlineTwoTone';
-import { Paper,makeStyles } from '@material-ui/core';
+import React, { useState } from 'react';
+import { Paper, makeStyles } from '@material-ui/core';
 import { useHistory } from "react-router-dom";
-import ExperienceForm from './forms/ExperienceForm';
-//parent component for hostform
+import ImageUpload from './ImageUpload';
+import './Experience.css';
+import ExperienceDetails from './ExperienceDetails';
+import { useLocation } from 'react-router-dom';
 
 
 const useStyles = makeStyles(theme => ({
@@ -13,15 +14,38 @@ const useStyles = makeStyles(theme => ({
     }
 }))
 
+const BASE_URL = "http://localhost:5000/images/host/<host_id>"
 
-function Experience(){
+const Experience = (props) => {
+
+    const history = useHistory();
+    const location = useLocation();
+
+    console.log("experienceImageUploadUrl: " + location.state.experienceImageUploadUrl); 
+
+    console.log("experience-image-download-url " + `${BASE_URL}/${location.state.experienceId}`);
+
+    const experienceImageUrl = `${BASE_URL}/${location.state.experienceId}`;
 
     return (
-        
-        <Paper>
-            <ExperienceForm/>
+        <Paper className="ewExperience__formDisplay">
+            <div className="Experience__Details">
+                <h1>Experience</h1>
+                <ExperienceDetails experienceId={location.state.experienceId} />
+            </div>
+
+            <div className="Experience__PhotoUpload">
+                <h1>Update Experience Image</h1>
+                <ImageUpload imageUploadUrl={location.state.experienceImageUploadUrl}/>
+                <img className="experience-image-size" src={experienceImageUrl} />
+            </div>
+
+            <div className="your__experiences">
+                <h1>Add to Cart</h1>
+                {/* <HostExperienceList /> */}
+            </div>
+
         </Paper>
-    
     )
 }
-export default Experience
+export default Experience;

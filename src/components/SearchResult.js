@@ -10,7 +10,8 @@ function SearchResult({
     description,
     star,
     price,
-    total,
+    cuisine,
+    dinetime
 }) {
     return (
         <div className='searchResult'>
@@ -22,6 +23,8 @@ function SearchResult({
                     <p>{location}</p>
                     <h3>{title}</h3>
                     <p>____</p>
+                    <p>{cuisine}</p>
+                    <p>{dinetime}</p>
                     <p>{description}</p>
                 </div>
 
@@ -34,7 +37,7 @@ function SearchResult({
                     </div>
                     <div className='searchResults__price'>
                         <h2>{price}</h2>
-                        <p>{total}</p>
+                        
                     </div>
                 </div>
             </div>

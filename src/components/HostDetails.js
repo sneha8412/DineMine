@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Paper,makeStyles } from '@material-ui/core';
 import { useHistory } from "react-router-dom";
 import './HostProfile.css';
 import axios from "axios";
-import TextField from '@material-ui/core/TextField';
 import { useLocation } from 'react-router-dom';
-import { Grid } from '@material-ui/core';
 
 
 // const useStyles = makeStyles((theme) => ({
@@ -68,7 +65,7 @@ function HostDetails(props) {
 
             <div>Introduction: {hostDetails["intro"]}</div>
             <br/>
-            
+
             <div>Phone: {hostDetails["phone"]}</div>
         </div>
     );

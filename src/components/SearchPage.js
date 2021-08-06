@@ -16,11 +16,14 @@ function SearchPage() {
                 <Button variant="outlined">Location</Button>
                 <Button variant="outlined">View on Map</Button>
             </div>
+
             <SearchResult
                 img="https://images.unsplash.com/photo-1573225342350-16731dd9bf3d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=957&q=80"
                 location="Redmond"
                 title="Rustic Farm to Table Dining Experience"
                 description=" Seats 2 guest · Free parking · Outdoor seating · Non-Veg "
+                cuisine="American"
+                dinetime="Lunch"
                 star={4.73}
                 price="$20 / person"
                 
@@ -30,7 +33,9 @@ function SearchPage() {
                 img="https://images.unsplash.com/photo-1592178036268-cffc32b23b14?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
                 location="Issaquah"
                 title="The ultimate outdoor grill experience"
-                description="seats 6 guest · Outdoor · Private party . Lunch · Non-Veg "
+                description="seats 6 guest · Outdoor · Private party · Non-Veg "
+                cuisine="American"
+                dinetime="Lunch"
                 star={4.3}
                 price="$18 / person"
                 
@@ -40,7 +45,9 @@ function SearchPage() {
                 img="https://images.unsplash.com/photo-1530062845289-9109b2c9c868?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1052&q=80"
                 location="Redmond"
                 title="Vegan delight"
-                description="seats 4 guest ·Vegan buffet · Free parking · Dinner · Vegan · Vegetarian"
+                description="seats 4 guest · Free parking · Vegan · Vegetarian"
+                cuisine="Global"
+                dinetime="Dinner"
                 star={3.8}
                 price="$15 / person"
                 
@@ -49,7 +56,9 @@ function SearchPage() {
                 img="https://images.unsplash.com/photo-1608350911676-5975d658264e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1052&q=80"
                 location="Bellevue"
                 title="Fresh hand-rolled Sushi"
-                description="seats 4 guest · Sushi · Free parking · Non-veg · Dinner"
+                description="seats 4 guest · Sushi · Free parking · Non-veg "
+                cuisine="Japanese"
+                dinetime="Dinner"
                 star={4.1}
                 price="$20 / night"
                 
@@ -58,7 +67,9 @@ function SearchPage() {
                 img="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8bHVuY2glMjBpdGFsaWFufGVufDB8MHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
                 location="Seattle"
                 title="American Fries and Burger "
-                description="Seats 6 guest · Vegetarian · Free parking · Non-veg · Lunch and Dinner · Private dining room "
+                description="Seats 6 guest · Vegetarian · Free parking · Non-veg · Private dining room "
+                cuisine="American"
+                dinetime="Lunch/Dinner"
                 star={5.0}
                 price="$12 / night"
                 
@@ -67,7 +78,9 @@ function SearchPage() {
                 img="https://images.unsplash.com/photo-1600057858461-d15e7dfc6306?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1189&q=80"
                 location="Mercer Island"
                 title="Organic Stone Fired Pizza"
-                description="Seats 10 guest · Outdoor Seating · Vegetarian · Free Parking · Lunch and Dinner"
+                description="Seats 10 guest · Outdoor Seating · Vegetarian · Free Parking "
+                cuisine="Italian"
+                dinetime="Lunch/Dinner"
                 star={4.23}
                 price="$20 / person"
                 
@@ -76,7 +89,9 @@ function SearchPage() {
                 img="https://images.unsplash.com/photo-1493770348161-369560ae357d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
                 location="Seattle"
                 title="Organic Vegetarian Breakfast"
-                description="10 guest · Vegetarian · Vegan · Breakfast · Free parking · Outdoor"
+                description="10 guest · Vegetarian · Free parking · Outdoor"
+                cuisine="Vegan American"
+                dinetime="Breakfast"
                 star={3.85}
                 price="$10/ person"
             />

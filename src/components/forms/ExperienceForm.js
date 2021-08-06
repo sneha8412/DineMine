@@ -11,7 +11,7 @@ const initialFValues = {
     description: '',
     cuisine: '',
     dinetime: '', 
-    images: null
+    city: ''
 
 }
 
@@ -22,15 +22,15 @@ function ExperienceForm() {
         if ('title' in fieldValues)
             temp.title= fieldValues.title ? "" : "This field is required."
         if ('price $' in fieldValues)
-            temp.price = fieldValues.price < 0.00 ? "": "This field is required." //problem
+            temp.price = fieldValues.price < 0.00 ? "": "This field is required." 
         if ('description' in fieldValues)
             temp.hdescription = fieldValues.description ? "" : "This field is required."
         if ('cuisine' in fieldValues)
-            temp.cuisine = fieldValues.cuisine? "" : "Cuisine is not valid." //dropdown
+            temp.cuisine = fieldValues.cuisine? "" : "Cuisine is not valid." 
         if ('dinetime' in fieldValues)
             temp.dinetime = fieldValues.dinetime ? "" : "Enter one: Breakfast, Brunch, lunch, tea time, Dinner."
-        // if ('images' in fieldValues)
-        //     temp.images = fieldValues.images != null ? "" : "You must upload at least 5 images."//problem
+        if ('city' in fieldValues)
+            temp.city = fieldValues.city ? "" : "You must enter the city name."
         setErrors({
             ...temp
         })
@@ -101,13 +101,13 @@ function ExperienceForm() {
                     onChange={handleInputChange}
                     />
 
-                    {/* <Input 
-                    name="image"
-                    label ="Upload at least 5 pictures"
-                    value = {values.image}
+                    <Input 
+                    name="city"
+                    label ="City"
+                    value = {values.city}
                     onChange ={handleInputChange}
-                    error ={errors.image} //problem
-                    /> */}
+                    error ={errors.city} 
+                    />
 
                     
                 </Grid>
