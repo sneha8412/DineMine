@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Paper,makeStyles } from '@material-ui/core';
+import { Paper, makeStyles } from '@material-ui/core';
 import { useHistory } from "react-router-dom";
 import ExperienceForm from './forms/ExperienceForm'
 import ImageUpload from './ImageUpload';
@@ -29,7 +29,7 @@ const HostProfile = (props) => {
     const hostImageUrl = `${BASE_URL}/${location.state.hostId}`;
 
     return (
-        <Paper className="newHost__formDiaplay">
+        <Paper className="newHost__formDisplay">
             <div>
                 <h1>Host Profile</h1>
                 <HostDetails hostId={location.state.hostId} />
@@ -43,7 +43,7 @@ const HostProfile = (props) => {
                 <h1>Your Experiences</h1>
                 {/* <HostExperienceList /> */}
             </div>
-            <div className='header__right'>
+            <div >
                 <h1> List a new Experience</h1>
                 <ExperienceForm />
             </div>
