@@ -71,6 +71,7 @@ function HostExperienceList(props) {
         return hostExperiences.map((exp) => {
             return (
                 <SearchResult
+                key={exp["Experience ID"]}
                 img=""
                 location="Redmond"
                 title={exp["Title"]}
