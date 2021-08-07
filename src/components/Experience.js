@@ -5,7 +5,7 @@ import ImageUpload from './ImageUpload';
 import './Experience.css';
 import ExperienceDetails from './ExperienceDetails';
 import { useLocation } from 'react-router-dom';
-
+import ExperienceForm from './forms/ExperienceForm';
 
 const useStyles = makeStyles(theme => ({
     pageContent: {
@@ -29,6 +29,10 @@ const Experience = (props) => {
 
     return (
         <Paper className="ewExperience__formDisplay">
+            <div className="list__NewExperience">
+                <h1> List a new Experience</h1>
+                <ExperienceForm />
+            </div>
             <div className="Experience__Details">
                 <h1>Experience</h1>
                 <ExperienceDetails experienceId={location.state.experienceId} />
@@ -42,7 +46,6 @@ const Experience = (props) => {
 
             <div className="your__experiences">
                 <h1>Add to Cart</h1>
-                {/* <HostExperienceList /> */}
             </div>
 
         </Paper>

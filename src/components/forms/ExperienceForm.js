@@ -127,7 +127,7 @@ function ExperienceForm() {
                     <div>
                         <FormButton
                             type="submit"
-                            text="Submit" />
+                            text="Save" />
                         <FormButton
                             text="Reset"
                             color="default"

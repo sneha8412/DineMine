@@ -62,14 +62,14 @@ function HostForm() {
     const handleSubmit = e => {
         e.preventDefault()
         
-        // TODO remove after fxiing
-        // history.push({
-        //     pathname: "/hostprofile",
-        //     state: { 
-        //         hostImageUploadUrl: `http://localhost:5000/images/host/18/upload`,
-        //         hostId: 18
-        //     }
-        // });
+        //TODO remove after fxiing
+        history.push({
+            pathname: "/hostprofile",
+            state: { 
+                hostImageUploadUrl: `http://localhost:5000/images/host/1/upload`,
+                hostId: 1
+            }
+        });
 
         // TOOD remove
         

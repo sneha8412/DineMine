@@ -4,22 +4,13 @@ import './HostProfile.css';
 import axios from "axios";
 import { useLocation } from 'react-router-dom';
 
-
-// const useStyles = makeStyles((theme) => ({
-//     root: {
-//       '& .MuiTextField-root': {
-//         margin: theme.spacing(1),
-//         width: '25ch',
-//       },
-//     },
-//   }));
-
 function HostDetails(props) {
 
     const history = useHistory();
     const location = useLocation();
 
-    const [hostDetails, setHostDetails] = React.useState({});
+    const [hostDetails, setHostDetails] = React.useState();
+    const [isLoading, setIsLoading] = React.useState(true);
 
     const BASE_URL = "http://localhost:5000";
     
@@ -31,6 +22,7 @@ function HostDetails(props) {
 
                 console.log("Get Host Details: " + response.data);
                 setHostDetails(response.data);
+                setIsLoading(false);
             },
             (error) => {
                 console.log("Get Host Details: " + error);
@@ -39,21 +31,21 @@ function HostDetails(props) {
     };
 
     useEffect(() => {
+        console.log("useEffect host details");
 
         if (props.hostId)
         {
             getHostDetails();
         }
 
-    }, []);
+    }, [props.hostId]);
 
-    // componentDidMount() 
-
-    return (
+    const showHostDetails = () => {
+        return(
         <div>
             <div>Name: {hostDetails["name"]}</div>
             <br/>
-    
+
             <div>Address: {hostDetails["address"]}</div>
             <br/>
 
@@ -67,6 +59,13 @@ function HostDetails(props) {
             <br/>
 
             <div>Phone: {hostDetails["phone"]}</div>
+        </div>);
+    };
+
+    return (
+
+        <div>
+            {!isLoading && hostDetails && showHostDetails()}   
         </div>
     );
 };

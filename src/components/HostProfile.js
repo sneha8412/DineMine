@@ -5,6 +5,8 @@ import ExperienceForm from './forms/ExperienceForm'
 import ImageUpload from './ImageUpload';
 import './HostProfile.css';
 import HostDetails from './HostDetails';
+import HostExperienceList from './HostExperienceList';
+import Experience from './Experience';
 import { useLocation } from 'react-router-dom';
 
 
@@ -15,7 +17,7 @@ const useStyles = makeStyles(theme => ({
     }
 }))
 
-const BASE_URL = "http://localhost:5000/images/host"
+const BASE_URL = "http://localhost:5000"
 
 const HostProfile = (props) => {
 
@@ -27,14 +29,14 @@ const HostProfile = (props) => {
 
     console.log("hostImageUploadUrl: " + location.state.hostImageUploadUrl); 
 
-    console.log("host-image-download-url " + `${BASE_URL}/${location.state.hostId}`);
+    console.log("host-image-download-url " + `${BASE_URL}/images/host/${location.state.hostId}`);
 
     //const hostImageUrl = `${BASE_URL}/${location.state.hostId}`;
 
     useEffect(() => {
         if (location?.state?.hostId){
             setCurrentHostId(`${location.state.hostId}`);
-            setHostImageUrl(`${BASE_URL}/${location.state.hostId}`);
+            setHostImageUrl(`${BASE_URL}/images/host/${location.state.hostId}`);
         }
     }, [location.state.hostId]);
 
@@ -45,10 +47,11 @@ const HostProfile = (props) => {
     };
 
     return (
-        <Paper elevation={5} className="ewHost__formDisplay">
+        <div>
+        {/* <Paper elevation={5} className="ewHost__formDisplay"> */}
             <div className="Host__Details">
                 <h1>Host Profile</h1>
-                <HostDetails hostId={location.state.hostId} />
+                <HostDetails hostId={currentHostId} />
             </div>
 
             <div className="Host__PhotoUpload">
@@ -58,14 +61,11 @@ const HostProfile = (props) => {
 
             <div className="your__experiences">
                 <h1>Your Experiences</h1>
-                {/* <HostExperienceList /> */}
+                <HostExperienceList hostId={currentHostId} />
             </div>
-
-            <div className="list__NewExperience">
-                <h1> List a new Experience</h1>
-                <ExperienceForm />
-            </div>
-        </Paper>
+            {/* <Experience /> */}
+        {/* </Paper> */}
+        </div>
     )
 }
 export default HostProfile;
