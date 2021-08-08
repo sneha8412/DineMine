@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { FormControlLabel, Grid, Paper } from '@material-ui/core';
+import { FormControlLabel, Grid, Paper, makeStyles } from '@material-ui/core';
 import { useForm, Form } from './UseForm';
 import RadioGroup from './RadioGroup';
 import Input from './Input'
 import FormButton from './FormButton';
 import ImageUpload from '../ImageUpload';
 import './ExperienceForm.css';
+import Button from '@material-ui/core/Button';
 
 const initialFValues = {
     title: '',
@@ -14,10 +15,24 @@ const initialFValues = {
     cuisine: '',
     dinetime: '', 
     city: ''
+};
 
-}
+const useStyles = makeStyles((theme) => ({
+    margin: {
+      margin: theme.spacing(1),
+    },
+    extendedIcon: {
+      marginRight: theme.spacing(1),
+    },
+    pageContent: {
+        margin: theme.spacing(5),
+        padding: theme.spacing(3)
+    }
+  }));
 
 function ExperienceForm(props) {
+
+    const classes = useStyles();
 
     const validate = (fieldValues = values) => {
         let temp = { ...errors }
@@ -58,11 +73,19 @@ function ExperienceForm(props) {
         }
     }
 
+    const onSaveExperienceDetails  = e => {
+        e.preventDefault()
+        if (validate()){
+            // Save experience details in db
+            resetForm()
+        }
+    };
 
     return(
         <div>
         <Paper elevation={5}>
-        <Form onSubmit={handleSubmit}>
+        <div>
+        <Form>
           <h1 className="your__Experience" >Your Experience</h1>
             <Grid container className="Form__Input">
                 
@@ -132,7 +155,8 @@ function ExperienceForm(props) {
                     <div>
                         <FormButton
                             type="submit"
-                            text="Save" />
+                            text="Save" 
+                            onClick={onSaveExperienceDetails}/>
                         <FormButton
                             text="Reset"
                             color="default"
@@ -144,10 +168,16 @@ function ExperienceForm(props) {
             </Grid>
 
         </Form>
+        </div>
 
         <div className="Experience__PhotoUpload">
-                <h1>Update Experience Images</h1>
+                <h1>Add Photos</h1>
                 <ImageUpload imageUploadUrl=""/>
+        </div>
+        <div className="Publish_Experience">
+            <Button size="large" className={classes.margin} onClick="">
+                Publish
+            </Button>
         </div>
         </Paper>
         </div>
