@@ -16,6 +16,7 @@ import Footer from './components/Footer';
 import SearchPage from './components/SearchPage';
 import Host from './components/Host';
 import HostProfile from './components/HostProfile';
+import ExperienceForm from './components/forms/ExperienceForm';
 
 
 function App() {
@@ -39,6 +40,9 @@ function App() {
      </Route>
      <Route path="/experience">
        <Experience />
+     </Route>
+     <Route path="/newexperience">
+       <ExperienceForm />
      </Route>
      <Route path="/">
        <Home />

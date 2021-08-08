@@ -1,5 +1,4 @@
-.image-size
-{
+.image-size{
     height: 150px;
     width: 150px;
     padding: 10px;
@@ -7,13 +6,15 @@
 
 .Host__Details{
     padding-left: 70px;
-  
-
 }
 
 .Host__PhotoUpload{
     padding-left: 70px;
     padding-top: 10px;
+}
+
+.Host__Profile{
+    padding-top:20px;
 }
 
 .your__experiences{
@@ -24,4 +25,10 @@
 .list__NewExperience{
     padding-left: 70px;
     padding-top: 10px;
+}
+
+.createNewExperienceButton{
+    padding-left: 70px;
+    padding-bottom: 30px;
+
 }

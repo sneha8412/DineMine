@@ -8,21 +8,29 @@ import HostDetails from './HostDetails';
 import HostExperienceList from './HostExperienceList';
 import Experience from './Experience';
 import { useLocation } from 'react-router-dom';
+import FormButton from './forms/FormButton';
+import Button from '@material-ui/core/Button';
 
+const BASE_URL = "http://localhost:5000";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
+    margin: {
+      margin: theme.spacing(1),
+    },
+    extendedIcon: {
+      marginRight: theme.spacing(1),
+    },
     pageContent: {
         margin: theme.spacing(5),
         padding: theme.spacing(3)
     }
-}))
-
-const BASE_URL = "http://localhost:5000"
+  }));
 
 const HostProfile = (props) => {
 
     const history = useHistory();
     const location = useLocation();
+    const classes = useStyles();
 
     const [hostImageUrl, setHostImageUrl] = useState("");
     const [currentHostId, setCurrentHostId] = useState("");
@@ -46,11 +54,21 @@ const HostProfile = (props) => {
         return [hostImageUrl];
     };
 
+    const handleCreateNewExperience = () => {
+        
+        history.push({
+            pathname: "/newexperience",
+            state: { 
+                userContext: "host"
+            }
+        });
+    };
+
     return (
         <div>
-        {/* <Paper elevation={5} className="ewHost__formDisplay"> */}
+        <Paper elevation={5} className="NewHost__formDisplay">
             <div className="Host__Details">
-                <h1>Host Profile</h1>
+                <h1 className="Host__Profile">Host Profile</h1>
                 <HostDetails hostId={currentHostId} />
             </div>
 
@@ -63,8 +81,12 @@ const HostProfile = (props) => {
                 <h1>Your Experiences</h1>
                 <HostExperienceList hostId={currentHostId} />
             </div>
-            {/* <Experience /> */}
-        {/* </Paper> */}
+            <div className="createNewExperienceButton">
+                <Button size="large" className={classes.margin} onClick={handleCreateNewExperience}>
+                    Create New Experience
+                </Button>
+            </div>
+        </Paper>
         </div>
     )
 }

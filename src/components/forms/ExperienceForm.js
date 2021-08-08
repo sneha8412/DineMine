@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { FormControlLabel, Grid } from '@material-ui/core';
+import { FormControlLabel, Grid, Paper } from '@material-ui/core';
 import { useForm, Form } from './UseForm';
 import RadioGroup from './RadioGroup';
 import Input from './Input'
 import FormButton from './FormButton';
+import ImageUpload from '../ImageUpload';
+import './ExperienceForm.css';
 
 const initialFValues = {
     title: '',
@@ -15,7 +17,7 @@ const initialFValues = {
 
 }
 
-function ExperienceForm() {
+function ExperienceForm(props) {
 
     const validate = (fieldValues = values) => {
         let temp = { ...errors }
@@ -59,8 +61,11 @@ function ExperienceForm() {
 
     return(
         <div>
+        <Paper elevation={5}>
         <Form onSubmit={handleSubmit}>
-            <Grid container>
+          <h1 className="your__Experience" >Your Experience</h1>
+            <Grid container className="Form__Input">
+                
                 <Grid item xs={8}>
 
                     <Input
@@ -139,7 +144,14 @@ function ExperienceForm() {
             </Grid>
 
         </Form>
+
+        <div className="Experience__PhotoUpload">
+                <h1>Update Experience Images</h1>
+                <ImageUpload imageUploadUrl=""/>
         </div>
+        </Paper>
+        </div>
+        
     )
 };
 

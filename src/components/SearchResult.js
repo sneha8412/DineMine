@@ -2,6 +2,7 @@ import React from 'react';
 import './SearchResult.css';
 import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import StarIcon from "@material-ui/icons/Star";
+import { useHistory } from "react-router-dom";
 
 function SearchResult({
     img,
@@ -11,10 +12,25 @@ function SearchResult({
     star,
     price,
     cuisine,
-    dinetime
+    dinetime,
+    itemId
 }) {
+
+    const history = useHistory();
+
+    const handleOnClick = (itemId) => {
+
+        history.push({
+            pathname: "/experience",
+            state: { 
+                experienceId: itemId,
+                //experienceImageUploadUrl: `http://localhost:5000/images/experience/${itemId}/upload`
+            }
+        });
+    }
+
     return (
-        <div className='searchResult'>
+        <div className='searchResult' onClick={() => handleOnClick(itemId)}>
             <img src={img} alt="" />
             <FavoriteBorderIcon className="searchResult__heart" />
 

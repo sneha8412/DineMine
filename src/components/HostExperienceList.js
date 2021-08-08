@@ -12,6 +12,7 @@ function HostExperienceList(props) {
     const location = useLocation();
 
     const [hostExperiences, setHostExperiences] = React.useState();
+    const [imagesForHostExperiences, setImagesForHostExperiences] = React.useState(new Map());
 
     const BASE_URL = "http://localhost:5000";
     
@@ -24,10 +25,14 @@ function HostExperienceList(props) {
                 console.log("Get Host Experiences: " + response.data);
                 setHostExperiences(response.data);
 
-                // for(let i=0; i < hostExperiences.length(); i++)
-                // {
-                    
-                // }
+                for (let i = 0; i < hostExperiences?.length; i++)
+                {
+                    const exp = hostExperiences[i];
+                    const exp_id = exp["Experience ID"];
+                    imagesForHostExperiences.set(exp_id, `${BASE_URL}/images/experience/${exp_id}`);
+                    console.log(`setting image url for expId ${exp_id} to: ${BASE_URL}/images/experience/${exp_id}`);
+                    setImagesForHostExperiences(imagesForHostExperiences);
+                }
             },
             (error) => {
                 console.log("Get Host Experiences: " + error);
@@ -35,23 +40,25 @@ function HostExperienceList(props) {
         );
     };
 
-    const getMainImageForExperience = (exp_id) => {
+    // const getMainImageForExperience = (exp_id) => {
 
-        axios.get(`${BASE_URL}/images/experience/${exp_id}`,
-        {
+    //     axios.get(`${BASE_URL}/images/experience/${exp_id}`,
+    //     {
 
-        }).then((response) => {
+    //     }).then((response) => {
 
-                console.log("Get Experience images: " + response.data);
-                //setHostExperiences(response.data);
-                console.log("Main experience image: " + response.data[0]);
-                return response.data[0]
-            },
-            (error) => {
-                console.log("Get Experience images: " + error);
-            }
-        );
-    };
+    //             console.log("Get Experience images: " + response.data);
+    //             //setHostExperiences(response.data);
+    //             console.log("Main experience image: " + response.data[0]);
+                
+    //             hostExperiences.set(exp_id, response.data[0]);
+
+    //         },
+    //         (error) => {
+    //             console.log("Get Experience images: " + error);
+    //         }
+    //     );
+    // };
 
 
     useEffect(() => {
@@ -72,8 +79,8 @@ function HostExperienceList(props) {
             return (
                 <SearchResult
                 key={exp["Experience ID"]}
-                img=""
-                location="Redmond"
+                img={imagesForHostExperiences.get(exp["Experience ID"])}
+                location="todo: add location"
                 title={exp["Title"]}
                 description={exp["Description"]}
                 cuisine={exp["Cuisine"]}
