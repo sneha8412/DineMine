@@ -8,18 +8,18 @@ export function useForm(initialFValues, validateOnChange = false, validate) {
     const [errors, setErrors] = useState({});
 
     const handleInputChange = e => {
-        const { name, value } = e.target
+        const { name, value } = e.target;
         setValues({
             ...values,
             [name]: value
-        })
+        });
         if (validateOnChange)
             validate({ [name]: value })
     }
 
     const resetForm = () => {
         setValues(initialFValues);
-        setErrors({})
+        setErrors({});
     }
 
 
@@ -31,7 +31,7 @@ export function useForm(initialFValues, validateOnChange = false, validate) {
         handleInputChange,
         resetForm
 
-    }
+    };
 }
 
 
@@ -42,7 +42,7 @@ const useStyles = makeStyles(theme => ({
             margin: theme.spacing(1)
         }
     }
-}))
+}));
 
 export function Form(props) {
 

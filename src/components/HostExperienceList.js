@@ -82,7 +82,6 @@ function HostExperienceList(props) {
 
     }, [props.hostId]);
 
-    // componentDidMount() 
     const renderExperienceCards = () => {
 
         return hostExperiences.map((exp) => {
@@ -106,9 +105,6 @@ function HostExperienceList(props) {
                         dinetime={exp["Dine time"]}
                         star={4.73}
                         price={exp["Price"]} />
-                    {/* <div className="image-size">
-                        <img className="image-size" key={expId} src={hashImgUrl} />
-                    </div> */}
                 </div>
             );
         });        
