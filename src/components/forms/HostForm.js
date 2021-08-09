@@ -63,13 +63,13 @@ function HostForm() {
         e.preventDefault()
         
         //TODO remove after fxiing
-        // history.push({
-        //     pathname: "/hostprofile",
-        //     state: { 
-        //         hostImageUploadUrl: `http://localhost:5000/images/host/1/upload`,
-        //         hostId: 1
-        //     }
-        // });
+        history.push({
+            pathname: "/hostprofile",
+            state: { 
+                hostImageUploadUrl: `http://localhost:5000/images/host/1/upload`,
+                hostId: 1
+            }
+        });
         
         if (validate()){
             // employeeService.insertEmployee(values)
