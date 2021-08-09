@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import SimpleMap from '../components/SimpleMap';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
+import './ImageUpload.css';
 
 
 const ImageUpload = (props) => {
@@ -33,6 +34,19 @@ const ImageUpload = (props) => {
         const img_id = response.data["img_id"];
         console.log("image_id uploaded: " + img_id);
         setUploadedImageId(img_id);
+
+        // Fire function on upload of new image 
+        if (props.refreshImageUrls)
+        {
+          props.refreshImageUrls();
+        }
+
+        // Get the refreshed image urls
+        if (props.getImageUrls)
+        {
+          const imageUrls = props.getImageUrls();
+          setImageDownloadUrls(imageUrls);
+        }
     }, 
     (error) => {
         console.log(error);
@@ -56,6 +70,14 @@ const ImageUpload = (props) => {
       setImageDownloadUrls(imageUrls);
     }
   }, [props.getImageUrls]);
+
+  // useEffect(() => {
+  //   if (props.imageDownloadUrls)
+  //   {
+  //     const imageUrls = props.imageDownloadUrls;
+  //     setImageDownloadUrls(imageUrls);
+  //   }
+  // }, [props.imageDownloadUrls]);
 
   const renderImages = () => {
     if (imageDownloadUrls)

@@ -59,7 +59,8 @@ const HostProfile = (props) => {
         history.push({
             pathname: "/newexperience",
             state: { 
-                userContext: "host"
+                userContext: "host",
+                hostId: currentHostId
             }
         });
     };

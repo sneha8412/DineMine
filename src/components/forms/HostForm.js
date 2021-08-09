@@ -70,8 +70,6 @@ function HostForm() {
                 hostId: 1
             }
         });
-
-        // TOOD remove
         
         if (validate()){
             // employeeService.insertEmployee(values)

@@ -7,6 +7,10 @@ import FormButton from './FormButton';
 import ImageUpload from '../ImageUpload';
 import './ExperienceForm.css';
 import Button from '@material-ui/core/Button';
+import { useHistory } from 'react-router-dom';
+import axios from "axios";
+import { useLocation } from 'react-router-dom';
+import { LocationOn } from '@material-ui/icons';
 
 const initialFValues = {
     title: '',
@@ -30,16 +34,37 @@ const useStyles = makeStyles((theme) => ({
     }
   }));
 
+const BASE_URL = "http://localhost:5000";
+
 function ExperienceForm(props) {
 
+    const history = useHistory();
+    const location = useLocation();
     const classes = useStyles();
+
+    const [experienceId, setExperienceId] = useState("16");
+    const [hostId, setHostId] = useState("");
+    const [experienceImagesUrls, setExperienceImagesUrls] = useState([]);
+    const [lastShownExpImageUrls, setLastShownImageUrls] = useState([]);
+    const [publishButtonDisabled, setPublishButtonDisabled] = useState(false);
+    
+
+    useEffect(() => {
+
+        if (location?.state?.userContext && location?.state?.userContext === "host")
+        {
+            setHostId(`${location.state.hostId}`);
+            getExperienceImageUrls();
+        }
+
+    }, []);
 
     const validate = (fieldValues = values) => {
         let temp = { ...errors }
         if ('title' in fieldValues)
             temp.title= fieldValues.title ? "" : "This field is required."
-        if ('price $' in fieldValues)
-            temp.price = fieldValues.price < 0.00 ? "": "This field is required." 
+        if ('price' in fieldValues)
+            temp.price = fieldValues.price > 0.00 ? "": "This field is required." 
         if ('description' in fieldValues)
             temp.hdescription = fieldValues.description ? "" : "This field is required."
         if ('cuisine' in fieldValues)
@@ -65,20 +90,114 @@ function ExperienceForm(props) {
         resetForm
     } = useForm(initialFValues, true, validate);
 
-    const handleSubmit = e => {
-        e.preventDefault()
+    const onSaveExperienceDetails  = e => {
+        e.preventDefault();
+            
         if (validate()){
             // employeeService.insertEmployee(values)
-            resetForm()
-        }
-    }
 
-    const onSaveExperienceDetails  = e => {
-        e.preventDefault()
-        if (validate()){
-            // Save experience details in db
-            resetForm()
+            // create host json object to send to backend
+            const experience = { 
+                "Title": values.title,
+                "Price": values.price,
+                "Description": values.description,
+                "Cuisine": values.cuisine,
+                "Dine time": values.dinetime,
+            }
+
+            axios.post(`${BASE_URL}/experiences/hosts/${hostId}`, experience).then((response) => {
+
+                    console.log(response.data, '!');
+                    const exp_id = response.data["experience_id"];
+                    setExperienceId(exp_id);
+
+                    console.log("new experience post to server handler" + exp_id);
+
+                    getExperienceImageUrls(exp_id);
+
+                    setPublishButtonDisabled(false);                    
+                }, 
+                (error) => {
+                    console.log(error);
+                });
         }
+    };
+
+    const getExperienceImageUrls = () => {
+
+        return experienceImagesUrls;
+    };
+
+    const refreshExperienceImageUrlsOnImageUpload = () => {
+        updateExperienceImageUrls();
+    };
+
+    const addExperiencePhotos = () => {
+
+        return (
+            <div className="Experience__PhotoUpload">
+                <h1>Add Photos</h1>
+                <ImageUpload imageUploadUrl={`${BASE_URL}/images/experience/${experienceId}/upload`} getImageUrls={getExperienceImageUrls} refreshImageUrls={refreshExperienceImageUrlsOnImageUpload}/>
+            </div>
+        );
+    };
+
+    useEffect(() => {
+
+        if (experienceId !== "")
+        {
+            updateExperienceImageUrls();
+        }
+
+    }, [experienceId]);
+
+
+    const updateExperienceImageUrls = () => {
+
+        if (experienceId === "")
+        {
+            return;
+        }
+
+        // get experience images and extract ids
+        axios.get(`${BASE_URL}/images/experience/${experienceId}`)
+                
+        .then((response) => {
+
+            console.log(response.data, '!');
+            const expImages = response.data;
+            console.log("Experience Images: " + expImages);
+            
+            let expImageUrls = [];
+
+            for(let i=0; i < expImages.length; i++){
+                const expImg = expImages[i];
+                const imgId = expImg["id"];
+                expImageUrls.push(`${BASE_URL}/images/${imgId}`);
+            }
+
+            if (expImageUrls.length != experienceImagesUrls.length)
+            {
+                setExperienceImagesUrls(expImageUrls);
+            }
+
+            console.log("Experience image urls: " + experienceImagesUrls);
+
+        }, 
+        (error) => {
+            console.log(error);
+        });
+    };
+    
+    const onPublishExperienceHandler = () => {
+
+        history.push({
+            pathname: "/experience",
+            state: { 
+                experienceId: experienceId
+            }
+        });
+
     };
 
     return(
@@ -86,11 +205,9 @@ function ExperienceForm(props) {
         <Paper elevation={5}>
         <div>
         <Form>
-          <h1 className="your__Experience" >Your Experience</h1>
+          <h1 className="your__Experience" >Create Your Experience</h1>
             <Grid container className="Form__Input">
-                
                 <Grid item xs={8}>
-
                     <Input
                     name ="title"
                     label ="Experience Title"
@@ -137,21 +254,9 @@ function ExperienceForm(props) {
                     onChange ={handleInputChange}
                     error ={errors.city} 
                     />
-
-                    
                 </Grid>
 
                 <Grid item xs = {4}>
-                    
-                        {/* <RadioGroup 
-                        name = "CertifiedKitchen"
-                        lable = "Kitchen Certified for commercial cooking? "
-                        value = {values.CertifiedKitchen}
-                        onChange = {handleInputChange} 
-                        items={false}
-                        /> 
-                        */}
-                
                     <div>
                         <FormButton
                             type="submit"
@@ -162,20 +267,17 @@ function ExperienceForm(props) {
                             color="default"
                             onClick={resetForm} />
                     </div>
-                 
                 </Grid> 
-                
             </Grid>
-
         </Form>
         </div>
 
-        <div className="Experience__PhotoUpload">
-                <h1>Add Photos</h1>
-                <ImageUpload imageUploadUrl=""/>
+        <div>
+            {experienceId !== "" && addExperiencePhotos()}
         </div>
+
         <div className="Publish_Experience">
-            <Button size="large" className={classes.margin} onClick="">
+            <Button size="large" className={classes.margin} onClick={onPublishExperienceHandler} disabled={publishButtonDisabled}>
                 Publish
             </Button>
         </div>
