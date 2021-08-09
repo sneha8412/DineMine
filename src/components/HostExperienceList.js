@@ -89,9 +89,9 @@ function HostExperienceList(props) {
             const expId = exp["Experience ID"];
             let imgHash = Date.now();
             const imgUrl = imagesForHostExperiences.get(expId);
-            let hashImgUrl = `${imgUrl}?${imgHash}`
-            if (!imgUrl){
-                hashImgUrl = "";
+            let hashImgUrl = "";
+            if (imgUrl){
+                hashImgUrl = `${imgUrl}?${imgHash}`;
             }
             console.log(`render image url for ${expId}: " + ${hashImgUrl}`);
             return (
