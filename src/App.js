@@ -13,11 +13,11 @@ import SearchResultsPage from './pages/SearchResults';
 import Experience from './components/Experience';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import SearchPage from './components/SearchPage';
 import Host from './components/Host';
 import HostProfile from './components/HostProfile';
 import ExperienceForm from './components/forms/ExperienceForm';
 import Checkout from './components/Checkout';
+import SearchResultsList from './components/SearchResultsList';
 
 
 function App() {
@@ -31,7 +31,7 @@ function App() {
    
    <Switch>
      <Route path="/search">
-       <SearchPage />
+       <SearchResultsList />
      </Route>
      <Route path="/newhost">
        <Host />

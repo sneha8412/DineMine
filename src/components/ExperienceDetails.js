@@ -23,8 +23,7 @@ function ExperienceDetails(props) {
     const location = useLocation();
 
     const [expDetails, setExpDetails] = React.useState();
-    const [experienceId, setExperienceId] = useState(16); // Debug: 16
-    const [hostId, setHostId] = useState("");
+    const [experienceId, setExperienceId] = useState(); // Debug: 16
     const [experienceImagesUrls, setExperienceImagesUrls] = useState([]);
     const [userContext, setUserContext] = useState("guest");
 
@@ -34,8 +33,8 @@ function ExperienceDetails(props) {
     const BASE_URL = "http://localhost:5000";
     const classes = useStyles();
     
-    const getExperienceDetails = () => {
-        axios.get(`${BASE_URL}/experiences/${experienceId}`,
+    const getExperienceDetails = (expId) => {
+        axios.get(`${BASE_URL}/experiences/${expId}`,
         {
 
         }).then((response) => {
@@ -43,7 +42,6 @@ function ExperienceDetails(props) {
                 console.log("Get Exp Details: " + response.data);
                 setExpDetails(response.data);
                 setExperienceId(response.data["Experience ID"]);
-                //setIsLoading(false);
             },
             (error) => {
                 console.log("Get Exp Details: " + error);
@@ -59,13 +57,13 @@ function ExperienceDetails(props) {
         if (location?.state?.experienceId)
         {
             setExperienceId(location?.state?.experienceId);
+
+            loadExperiencePhotos(location?.state?.experienceId);
+
+            getExperienceDetails(location?.state?.experienceId);
         }
 
-        loadExperiencePhotos();
-
-        getExperienceDetails();
-
-    }, [location?.state?.experienceId]);
+    }, [location?.state?.experienceId, location?.state?.userContext]);
 
     const saveExpDetailChanges = (e) => {
         
@@ -95,9 +93,9 @@ function ExperienceDetails(props) {
         setSaveExpDetailsButtonDisabled(false);
     };
 
-    const loadExperiencePhotos = () => {
+    const loadExperiencePhotos = (expId) => {
             // get experience images and extract ids
-            axios.get(`${BASE_URL}/images/experience/${experienceId}`)
+            axios.get(`${BASE_URL}/images/experience/${expId}`)
                 
                 .then((response) => {
         
@@ -156,12 +154,14 @@ function ExperienceDetails(props) {
     }
 
     const showExpDetailSaveButton = () => {
-        return         
-            (<FormButton
-            type="submit"
-            text="Save Changes"
-            disabled={expDetailsButtonDisabled} 
-            onClick={saveExpDetailChanges}/>);
+        return (
+            <div>
+                <FormButton
+                type="submit"
+                text="Save Changes"
+                disabled={expDetailsButtonDisabled} 
+                onClick={saveExpDetailChanges}/>
+            </div>);
     };
 
     const showExperienceDetails = () => {

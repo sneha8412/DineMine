@@ -13,7 +13,8 @@ function SearchResult({
     price,
     cuisine,
     dinetime,
-    itemId
+    itemId,
+    context = "guest"
 }) {
 
     const history = useHistory();
@@ -23,8 +24,8 @@ function SearchResult({
         history.push({
             pathname: "/experience",
             state: { 
-                experienceId: itemId
-                //experienceImageUploadUrl: `http://localhost:5000/images/experience/${itemId}/upload`
+                experienceId: itemId,
+                userContext: context
             }
         });
     }
@@ -52,7 +53,7 @@ function SearchResult({
                         </p>
                     </div>
                     <div className='searchResults__price'>
-                        <h2>{price}</h2>
+                        <h2>{price} / person</h2>
                         
                     </div>
                 </div>

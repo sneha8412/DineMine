@@ -101,10 +101,13 @@ function HostExperienceList(props) {
                         location="todo: add location"
                         title={exp["Title"]}
                         description={exp["Description"]}
+                        star={4.73}
+                        price={exp["Price"]}
                         cuisine={exp["Cuisine"]}
                         dinetime={exp["Dine time"]}
-                        star={4.73}
-                        price={exp["Price"]} />
+                        itemId={expId}
+                        context="host"
+                        />
                 </div>
             );
         });        

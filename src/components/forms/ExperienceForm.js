@@ -42,7 +42,7 @@ function ExperienceForm(props) {
     const location = useLocation();
     const classes = useStyles();
 
-    const [experienceId, setExperienceId] = useState("16"); // Debug: 16
+    const [experienceId, setExperienceId] = useState(""); // Debug: 16
     const [hostId, setHostId] = useState("");
     const [experienceImagesUrls, setExperienceImagesUrls] = useState([]);
     const [lastShownExpImageUrls, setLastShownImageUrls] = useState([]);
