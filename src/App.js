@@ -17,6 +17,7 @@ import SearchPage from './components/SearchPage';
 import Host from './components/Host';
 import HostProfile from './components/HostProfile';
 import ExperienceForm from './components/forms/ExperienceForm';
+import Checkout from './components/Checkout';
 
 
 function App() {
@@ -43,6 +44,9 @@ function App() {
      </Route>
      <Route path="/newexperience">
        <ExperienceForm />
+     </Route>
+     <Route path="/checkout">
+       <Checkout />
      </Route>
      <Route path="/">
        <Home />

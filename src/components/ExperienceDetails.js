@@ -35,7 +35,7 @@ function ExperienceDetails(props) {
     const classes = useStyles();
     
     const getExperienceDetails = () => {
-        axios.get(`${BASE_URL}/experiences/${props.experienceId}`,
+        axios.get(`${BASE_URL}/experiences/${experienceId}`,
         {
 
         }).then((response) => {
@@ -54,30 +54,25 @@ function ExperienceDetails(props) {
     useEffect(() => {
         console.log("useEffect experience details");
 
-        if (props.experienceId)
+        setUserContext(location?.state?.userContext ?? "guest");
+
+        if (location?.state?.experienceId)
         {
-            setExperienceId(props.experienceId);
+            setExperienceId(location?.state?.experienceId);
         }
+
+        loadExperiencePhotos();
 
         getExperienceDetails();
 
-        if (props.userContext === "guest")
-        {
-            setUserContext("guest");
-        }
-        else
-        {
-            setUserContext("host");
-        }
-
-    }, [props.experienceId]);
+    }, [location?.state?.experienceId]);
 
     const saveExpDetailChanges = (e) => {
         
         e.preventDefault();
 
         axios.put(
-            `${BASE_URL}/experiences/${props.experienceId}`, 
+            `${BASE_URL}/experiences/${experienceId}`, 
             expDetails
         ).then((response) => {
 
@@ -99,16 +94,6 @@ function ExperienceDetails(props) {
         setExpDetails(expInfo);
         setSaveExpDetailsButtonDisabled(false);
     };
-
-    useEffect(() => {
-        loadExperiencePhotos();
-
-        if (props.userContext === "guest")
-        {
-
-        }
-
-    }, []);
 
     const loadExperiencePhotos = () => {
             // get experience images and extract ids
@@ -143,16 +128,18 @@ function ExperienceDetails(props) {
 
     const onAddToCartClicked = () => {
         console.log("Add to cart clicked")
+        history.push("/checkout");
     };
 
-    const showGuestInteractions = () => {
+    const showAddToCart = () => {
 
         return (
-            <Button size="large" className={classes.margin} onClick={onAddToCartClicked}>
-                Add To My Cart
-            </Button>
-        )
-
+            <div className="add_to_cart_button">
+                <Button size="large" className={classes.margin} onClick={onAddToCartClicked}>
+                    Add To My Cart
+                </Button>
+            </div>
+        );
     };
 
     const showExperiencePhotos = () => {
@@ -168,6 +155,14 @@ function ExperienceDetails(props) {
         });
     }
 
+    const showExpDetailSaveButton = () => {
+        return         
+            (<FormButton
+            type="submit"
+            text="Save Changes"
+            disabled={expDetailsButtonDisabled} 
+            onClick={saveExpDetailChanges}/>);
+    };
 
     const showExperienceDetails = () => {
         return(
@@ -179,7 +174,7 @@ function ExperienceDetails(props) {
             defaultValue={expDetails["Title"]}
             onChange={handleTitleChange}
             InputProps={{
-                readOnly: false,
+                readOnly: (userContext === "guest"),
                 }}
           />
           <br />
@@ -188,7 +183,7 @@ function ExperienceDetails(props) {
             label="Price"
             defaultValue={expDetails["Price"]}
             InputProps={{
-                readOnly: true,
+                readOnly: (userContext === "guest"),
                 }}
           />
           <br />
@@ -197,7 +192,7 @@ function ExperienceDetails(props) {
             label="Dine Time"
             defaultValue={expDetails["Dine time"]}
             InputProps={{
-                readOnly: true,
+                readOnly: (userContext === "guest"),
                 }}
           />
           <br />
@@ -206,7 +201,7 @@ function ExperienceDetails(props) {
             label="Cuisine"
             defaultValue={expDetails["Cuisine"]}
             InputProps={{
-                readOnly: true,
+                readOnly: (userContext === "guest"),
                 }}
           />
           <br />
@@ -215,16 +210,13 @@ function ExperienceDetails(props) {
             label="Details"
             defaultValue={expDetails["Description"]}
             InputProps={{
-                readOnly: true,
+                readOnly: (userContext === "guest"),
                 }}
           /> <br />
-        <FormButton
-            type="submit"
-            text="Save Changes"
-            disabled={expDetailsButtonDisabled} 
-            onClick={saveExpDetailChanges}/>
+            {userContext === "host" && showExpDetailSaveButton()}
           </form>
-        </div>);
+        </div>
+        );
     };
 
     return (
@@ -236,7 +228,7 @@ function ExperienceDetails(props) {
                 {experienceImagesUrls && experienceImagesUrls.length > 0 && showExperiencePhotos()}
             </div>
             <div className="add_to_cart_button">
-                {userContext === "guest" && showGuestInteractions()}
+                {userContext === "guest" && showAddToCart()}
             </div>
         </div>
     );

@@ -23,15 +23,15 @@ const Experience = (props) => {
 
     //console.log("experienceImageUploadUrl: " + location.state.experienceImageUploadUrl); 
 
-    console.log("experience-image-download-url " + `${BASE_URL}/images/experience/${location.state.experienceId}`);
+    console.log("experience-id " + `${BASE_URL}/images/experience/${location?.state?.experienceId}`);
 
-    const experienceImageUrl = `${BASE_URL}/images/experience/${location.state.experienceId}`;
+    const experienceImageUrl = `${BASE_URL}/images/experience/${location?.state?.experienceId}`;
 
     return (
         <Paper elevation={15} className="NewExperience__formDisplay">
             <div className="Experience__Details">
                 <h1 className="Experience__Heading">Experience</h1>
-                <ExperienceDetails experienceId={location.state.experienceId} />
+                <ExperienceDetails experienceId={location?.state?.experienceId} />
             </div>
         </Paper>
     )

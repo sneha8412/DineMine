@@ -23,7 +23,7 @@ function SearchResult({
         history.push({
             pathname: "/experience",
             state: { 
-                experienceId: itemId,
+                experienceId: itemId
                 //experienceImageUploadUrl: `http://localhost:5000/images/experience/${itemId}/upload`
             }
         });
