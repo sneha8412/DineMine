@@ -11,6 +11,7 @@ import { useHistory } from 'react-router-dom';
 import axios from "axios";
 import { useLocation } from 'react-router-dom';
 import { LocationOn } from '@material-ui/icons';
+import config from '../../config.json';
 
 const initialFValues = {
     title: '',
@@ -35,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
     }
   }));
 
-const BASE_URL = "http://localhost:5000";
+const BASE_URL = config.SERVER_URL;
 
 function ExperienceForm(props) {
 

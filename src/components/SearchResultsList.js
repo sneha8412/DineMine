@@ -8,6 +8,7 @@ import ExperienceDetails from './ExperienceDetails';
 import { Button } from "@material-ui/core";
 import SearchResult from "./SearchResult";
 import './SearchResultsList.css';
+import config from '../config.json';
 
 const SearchResultsList = () => {
     
@@ -18,13 +19,13 @@ const SearchResultsList = () => {
     const [priceSortOrder, setPriceSortOrder] = React.useState("asc");
     const [imagesForAllExperiences, setImagesForAllExperiences] = React.useState(new Map());
 
-    const BASE_URL = "http://localhost:5000";
+    const BASE_URL = config.SERVER_URL;
 
     const nextPageEventHandler = event => {
         history.push({
             pathname: '/experience',
             //search: '?query=abc',
-            state: { query_url: "http://localhost:5000/experiences?id=123" }
+            //state: { query_url: "http://localhost:5000/experiences?id=123" }
         });
      };   
 

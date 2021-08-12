@@ -6,6 +6,7 @@ import './Experience.css';
 import ExperienceDetails from './ExperienceDetails';
 import { useLocation } from 'react-router-dom';
 import ExperienceForm from './forms/ExperienceForm';
+import config from '../config.json';
 
 const useStyles = makeStyles(theme => ({
     pageContent: {
@@ -14,7 +15,7 @@ const useStyles = makeStyles(theme => ({
     }
 }))
 
-const BASE_URL = "http://localhost:5000";
+const BASE_URL = config.SERVER_URL;
 
 const Experience = (props) => {
 

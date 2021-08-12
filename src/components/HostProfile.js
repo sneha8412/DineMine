@@ -10,8 +10,9 @@ import Experience from './Experience';
 import { useLocation } from 'react-router-dom';
 import FormButton from './forms/FormButton';
 import Button from '@material-ui/core/Button';
+import config from '../config.json';
 
-const BASE_URL = "http://localhost:5000";
+const BASE_URL = config.SERVER_URL;
 
 const useStyles = makeStyles((theme) => ({
     margin: {

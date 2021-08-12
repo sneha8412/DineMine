@@ -6,6 +6,7 @@ import { useLocation } from 'react-router-dom';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import FormButton from './forms/FormButton';
+import config from '../config.json';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -26,7 +27,7 @@ function HostDetails(props) {
     const [saveHostDetailsButtonDisabled, setSaveHostDetailsButtonDisabled] = React.useState(true);
     //const [isLoading, setIsLoading] = React.useState(true);
 
-    const BASE_URL = "http://localhost:5000";
+    const BASE_URL = config.SERVER_URL; //config.SERVER_URL;
     const classes = useStyles();
     
     const getHostDetails = () => {

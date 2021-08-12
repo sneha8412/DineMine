@@ -5,7 +5,8 @@ import axios from "axios";
 import { useLocation } from 'react-router-dom';
 import ExperienceDetails from './ExperienceDetails';
 import SearchResult from './SearchResult';
-import './HostExperienceList.css'
+import './HostExperienceList.css';
+import config from '../config.json';
 
 function HostExperienceList(props) {
 
@@ -15,7 +16,7 @@ function HostExperienceList(props) {
     const [hostExperiences, setHostExperiences] = React.useState([]);
     const [imagesForHostExperiences, setImagesForHostExperiences] = React.useState(new Map());
 
-    const BASE_URL = "http://localhost:5000";
+    const BASE_URL = config.SERVER_URL;
     
     const getHostExperiences = () => {
         axios.get(`${BASE_URL}/experiences/hosts/${props.hostId}`,
