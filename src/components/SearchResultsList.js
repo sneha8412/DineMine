@@ -15,6 +15,7 @@ const SearchResultsList = () => {
     const location = useLocation();
 
     const [allExperiences, setAllExperiences] = React.useState([]);
+    const [priceSortOrder, setPriceSortOrder] = React.useState("asc");
     const [imagesForAllExperiences, setImagesForAllExperiences] = React.useState(new Map());
 
     const BASE_URL = "http://localhost:5000";
@@ -27,8 +28,8 @@ const SearchResultsList = () => {
         });
      };   
 
-    const getAllExperiences = () => {
-        axios.get(`${BASE_URL}/experiences`,
+    const getAllExperiences = (exp_uri) => {
+        axios.get(exp_uri,
         {
 
         }).then((response) => {
@@ -113,9 +114,23 @@ const SearchResultsList = () => {
         
         console.log("GetAllExperienceList useEffect");
 
-        getAllExperiences();
+        getAllExperiences(`${BASE_URL}/experiences`);
 
     }, []);
+
+    const handlePriceSortClick = () => {
+
+        getAllExperiences(`${BASE_URL}/experiences?sort=${priceSortOrder}`);
+        
+        if (priceSortOrder === "asc")
+        {
+            setPriceSortOrder("desc");
+        }
+        else
+        {
+            setPriceSortOrder("asc");
+        }
+    };
 
     return (
         <div className='searchPage'>
@@ -124,7 +139,7 @@ const SearchResultsList = () => {
                 <h1>DineMines nearby</h1>
                 <Button variant="outlined">Cancellation Flexibility</Button>
                 <Button variant="outlined">Type of Cusine</Button>
-                <Button variant="outlined">Price</Button>
+                <Button variant="outlined" onClick={handlePriceSortClick}>Price</Button>
                 <Button variant="outlined">Dine Times</Button>
                 <Button variant="outlined">Location</Button>
                 <Button variant="outlined">View on Map</Button>

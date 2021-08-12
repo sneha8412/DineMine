@@ -85,10 +85,10 @@ function ExperienceDetails(props) {
 
     }
 
-    const handleTitleChange = (e) => {
+    const handleChange = (e, fieldName) => {
 
         let expInfo = expDetails;
-        expInfo["Title"] = e.target.value;
+        expInfo[fieldName] = e.target.value;
         setExpDetails(expInfo);
         setSaveExpDetailsButtonDisabled(false);
     };
@@ -172,7 +172,7 @@ function ExperienceDetails(props) {
             id="standard-read-only-input"
             label="Title"
             defaultValue={expDetails["Title"]}
-            onChange={handleTitleChange}
+            onChange={(e) => handleChange(e, "Title")}
             InputProps={{
                 readOnly: (userContext === "guest"),
                 }}
@@ -182,6 +182,7 @@ function ExperienceDetails(props) {
             id="standard-read-only-input"
             label="Price"
             defaultValue={expDetails["Price"]}
+            onChange={(e) => handleChange(e, "Price")}
             InputProps={{
                 readOnly: (userContext === "guest"),
                 }}
@@ -191,6 +192,7 @@ function ExperienceDetails(props) {
             id="standard-read-only-input"
             label="Dine Time"
             defaultValue={expDetails["Dine time"]}
+            onChange={(e) => handleChange(e, "Dine time")}
             InputProps={{
                 readOnly: (userContext === "guest"),
                 }}
@@ -200,6 +202,7 @@ function ExperienceDetails(props) {
             id="standard-read-only-input"
             label="Cuisine"
             defaultValue={expDetails["Cuisine"]}
+            onChange={(e) => handleChange(e, "Cuisine")}
             InputProps={{
                 readOnly: (userContext === "guest"),
                 }}
@@ -209,6 +212,7 @@ function ExperienceDetails(props) {
             id="standard-read-only-input"
             label="Details"
             defaultValue={expDetails["Description"]}
+            onChange={(e) => handleChange(e, "Description")}
             InputProps={{
                 readOnly: (userContext === "guest"),
                 }}
@@ -218,6 +222,7 @@ function ExperienceDetails(props) {
             id="standard-read-only-input"
             label="City"
             defaultValue={expDetails["city"]}
+            onChange={(e) => handleChange(e, "city")}
             InputProps={{
                 readOnly: (userContext === "guest"),
                 }}
@@ -227,11 +232,12 @@ function ExperienceDetails(props) {
             id="standard-read-only-input"
             label="Total number of guests"
             defaultValue={expDetails["Total number of guests"]}
+            onChange={(e) => handleChange(e, "Total number of guests")}
             InputProps={{
                 readOnly: (userContext === "guest"),
                 }}
           /> <br />
-          
+
             {userContext === "host" && showExpDetailSaveButton()}
           </form>
         </div>
