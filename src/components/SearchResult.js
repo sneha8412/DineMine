@@ -14,6 +14,7 @@ function SearchResult({
     cuisine,
     dinetime,
     itemId,
+    guests,
     context = "guest"
 }) {
 
@@ -43,6 +44,7 @@ function SearchResult({
                     <p>{cuisine}</p>
                     <p>{dinetime}</p>
                     <p>{description}</p>
+                    <p>{guests}</p>
                 </div>
 
                 <div className="searchResult__infoBottom">

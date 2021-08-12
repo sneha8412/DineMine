@@ -98,7 +98,7 @@ function HostExperienceList(props) {
                     <SearchResult
                         key={expId}
                         img={hashImgUrl}
-                        location="todo: add location"
+                        location={exp["City"]}
                         title={exp["Title"]}
                         description={exp["Description"]}
                         star={4.73}
@@ -106,6 +106,7 @@ function HostExperienceList(props) {
                         cuisine={exp["Cuisine"]}
                         dinetime={exp["Dine time"]}
                         itemId={expId}
+                        guests = {exp["Total number of guests"]}
                         context="host"
                         />
                 </div>

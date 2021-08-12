@@ -18,7 +18,8 @@ const initialFValues = {
     description: '',
     cuisine: '',
     dinetime: '', 
-    city: ''
+    city: '',
+    guests:0
 };
 
 const useStyles = makeStyles((theme) => ({
@@ -102,6 +103,8 @@ function ExperienceForm(props) {
                 "Description": values.description,
                 "Cuisine": values.cuisine,
                 "Dine time": values.dinetime,
+                "City": values.city,
+                "Total number of guests":values.guests
             }
 
             axios.post(`${BASE_URL}/experiences/hosts/${hostId}`, experience).then((response) => {
@@ -254,6 +257,14 @@ function ExperienceForm(props) {
                     onChange ={handleInputChange}
                     error ={errors.city} 
                     />
+
+                    <Input 
+                    name="guests"
+                    label ="Total number of guests"
+                    value = {values.guests}
+                    onChange ={handleInputChange}
+                    error ={errors.guests} 
+                    />  
                 </Grid>
 
                 <Grid item xs = {4}>

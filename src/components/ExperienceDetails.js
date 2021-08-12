@@ -213,6 +213,25 @@ function ExperienceDetails(props) {
                 readOnly: (userContext === "guest"),
                 }}
           /> <br />
+
+            <TextField
+            id="standard-read-only-input"
+            label="City"
+            defaultValue={expDetails["city"]}
+            InputProps={{
+                readOnly: (userContext === "guest"),
+                }}
+          /> <br />
+
+            <TextField
+            id="standard-read-only-input"
+            label="Total number of guests"
+            defaultValue={expDetails["Total number of guests"]}
+            InputProps={{
+                readOnly: (userContext === "guest"),
+                }}
+          /> <br />
+          
             {userContext === "host" && showExpDetailSaveButton()}
           </form>
         </div>
