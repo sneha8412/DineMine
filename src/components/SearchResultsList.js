@@ -9,6 +9,7 @@ import { Button } from "@material-ui/core";
 import SearchResult from "./SearchResult";
 import './SearchResultsList.css';
 import config from '../config.json';
+import SimpleMap from './SimpleMap.js';
 
 const SearchResultsList = () => {
     
@@ -17,7 +18,10 @@ const SearchResultsList = () => {
 
     const [allExperiences, setAllExperiences] = React.useState([]);
     const [priceSortOrder, setPriceSortOrder] = React.useState("asc");
+    const [cuisineFilter, setCuisineFilter] = React.useState('');
     const [imagesForAllExperiences, setImagesForAllExperiences] = React.useState(new Map());
+    const [numOfExperience, setNumOfExperiences] = React.useState();
+    //const [numOfExpereince, setNumOfExperiences] = React.useState();
 
     const BASE_URL = config.SERVER_URL;
 
@@ -37,6 +41,8 @@ const SearchResultsList = () => {
 
                 console.log("Get All Experiences: " + response?.data);
                 setAllExperiences(response?.data);
+
+                setNumOfExperiences(response?.data?.length);
 
                 for (let i = 0; i < response?.data?.length; i++)
                 {
@@ -96,7 +102,7 @@ const SearchResultsList = () => {
                     <SearchResult
                         key={expId}
                         img={hashImgUrl}
-                        location="todo: add location"
+                        location={exp["City"]}
                         title={exp["Title"]}
                         description={exp["Description"]}
                         star={4.73}
@@ -115,9 +121,20 @@ const SearchResultsList = () => {
         
         console.log("GetAllExperienceList useEffect");
 
-        getAllExperiences(`${BASE_URL}/experiences`);
+        //refetchEvent();
+        const expSearchUrl = location?.state?.searchUrl;
+        console.log("expSearchUrl: " + expSearchUrl);
 
-    }, []);
+        let searchurl = `${BASE_URL}/experiences`;
+
+        if (expSearchUrl && expSearchUrl.length > 0)
+        {
+            searchurl = expSearchUrl;
+        }
+
+        getAllExperiences(searchurl);
+
+    }, [location?.state?.searchUrl]);
 
     const handlePriceSortClick = () => {
 
@@ -133,17 +150,27 @@ const SearchResultsList = () => {
         }
     };
 
+    const handleCuisineFilterClick =() => {
+        getAllExperiences(`${BASE_URL}/experiences?cuisine=${cuisineFilter}`);
+
+        setCuisineFilter(cuisineFilter)
+    };
+
+    const handleSimpleMapClick =() => {
+        history.push('/map');
+    }
+
     return (
         <div className='searchPage'>
             <div className='searchPage__info'>
-                <p>62 DineMines · 26 august · 2 guest</p>
+                <p>{numOfExperience} DineMines found </p>
                 <h1>DineMines nearby</h1>
                 <Button variant="outlined">Cancellation Flexibility</Button>
-                <Button variant="outlined">Type of Cusine</Button>
+                <Button variant="outlined" onClick={handleCuisineFilterClick}>Type of Cusine</Button>
                 <Button variant="outlined" onClick={handlePriceSortClick}>Price</Button>
                 <Button variant="outlined">Dine Times</Button>
-                <Button variant="outlined">Location</Button>
-                <Button variant="outlined">View on Map</Button>
+                {/* <Button variant="outlined">Location</Button> */}
+                <Button variant="outlined" onClick={handleSimpleMapClick}>View on Map</Button>
             </div>
 
             <div>

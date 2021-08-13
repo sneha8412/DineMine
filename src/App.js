@@ -18,6 +18,7 @@ import HostProfile from './components/HostProfile';
 import ExperienceForm from './components/forms/ExperienceForm';
 import Checkout from './components/Checkout';
 import SearchResultsList from './components/SearchResultsList';
+import SimpleMap from './components/SimpleMap';
 
 
 function App() {
@@ -33,24 +34,35 @@ function App() {
      <Route path="/search">
        <SearchResultsList />
      </Route>
+
      <Route path="/newhost">
        <Host />
      </Route>
+
      <Route path="/hostprofile">
        <HostProfile />
      </Route>
+
      <Route path="/experience">
        <Experience />
      </Route>
+
+     <Route path="/map">
+       <SimpleMap/>
+     </Route>
+
      <Route path="/newexperience">
        <ExperienceForm />
      </Route>
+
      <Route path="/checkout">
        <Checkout />
      </Route>
+
      <Route path="/">
        <Home />
      </Route>
+
    </Switch>
    
    <Footer />
