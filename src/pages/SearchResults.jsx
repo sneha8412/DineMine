@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 import SimpleMap from '../components/SimpleMap';
-import { useLocation } from "react-router-dom";
-import SearchResultsList from "../components/SearchResultsList";
+import { useLocation } from 'react-router-dom';
+import SearchResultsList from '../components/SearchResultsList';
 
 
 const SearchResultsPage = (props) => {

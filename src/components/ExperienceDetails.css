@@ -1,0 +1,12 @@
+.image-size{
+    height: 200px;
+    width: 350px;
+    border-radius: 10px;
+    padding: 10px;
+    overflow: hidden;
+}
+
+.add_to_cart_button{
+    text-align: right;
+    padding-right: 70px;
+}

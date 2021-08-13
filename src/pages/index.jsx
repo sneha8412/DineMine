@@ -4,7 +4,7 @@ import SearchExperiences from '../components/SearchExperiences';
 //You have to use the link component to link between pages using react router
 import { Link } from 'react-router-dom';
 import NearbyExperiences from '../components/NearbyExperiences';
-import Geolocator from '../components/Geolocator';
+import Geolocator from '../components/google/Geolocator';
 import ImageUpload from '../components/ImageUpload';
 
 
