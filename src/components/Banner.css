@@ -17,7 +17,7 @@
   .banner__search {
       display: flex;
       flex-direction: column;
-  }
+  } 
   
   .banner__searchButton {
     background-color: white !important;
