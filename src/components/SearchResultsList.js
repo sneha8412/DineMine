@@ -157,7 +157,20 @@ const SearchResultsList = () => {
     };
 
     const handleSimpleMapClick =() => {
-        history.push('/map');
+        history.push(
+            {
+                pathname: '/map',
+                state: {
+                    centerMap: {lat: 47.3073, lng: -122.2285 },
+                    zoomLevel: 10,
+                    mapPoints: [
+                        {lat: 47.406209, lng: -122.322069 }, 
+                        {lat: 47.506209, lng: -122.232069 },
+                        {lat: 47.106209, lng: -122.432069 },
+                        {lat: 47.206209, lng: -122.132069 }
+                    ]
+                }
+            });
     }
 
     return (

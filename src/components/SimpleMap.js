@@ -2,13 +2,17 @@
 import React, { useState } from 'react';
 import GoogleMapReact from 'google-map-react';
 import Marker from './Marker';
+import { useLocation } from 'react-router';
 
 const GOOGLE_MAP_API_KEY = 'AIzaSyCzeqra04D0wYBWiutQu3_XIwdCWWDwS8Q';
 
 
 const SimpleMap = (props) => {
-    const [center, setCenter] = useState(props.center);//{lat: 47.606209, lng: -122.332069 });
-    const [zoom, setZoom] = useState(10);
+
+    const location = useLocation();
+
+    const [center, setCenter] = useState(location?.state?.centerMap ?? {lat: 47.3073, lng: -122.2285 });//{lat: 47.606209, lng: -122.332069 });
+    const [zoom, setZoom] = useState(location?.state?.zoomLevel ?? 10);
 
     const getMapOptions = () => {
       return {
@@ -57,7 +61,7 @@ const SimpleMap = (props) => {
           defaultZoom={zoom}
           options={getMapOptions} // shows Satellite view options
         >
-          {props.locations.map((location, i) => (
+          {location?.state?.mapPoints?.map((location, i) => (
             //if this is contained with {}, markers won't show up
             <Marker
             lat={location["lat"]}
