@@ -1,8 +1,15 @@
+
 .footer {
     border-top: 1px solid lightgray;
     padding: 20px;
     background-color: #f7f7f7;
     text-align: center;
+
+    vertical-align: bottom;
+    width: 100%;
+    /* bottom:0;
+    position: absolute; */
+    margin-top: -5px;
 }
 
 .footer > p {
