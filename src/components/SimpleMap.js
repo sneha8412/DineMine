@@ -11,8 +11,8 @@ const SimpleMap = (props) => {
 
     const location = useLocation();
 
-    const [center, setCenter] = useState(location?.state?.centerMap ?? {lat: 47.3073, lng: -122.2285 });//{lat: 47.606209, lng: -122.332069 });
-    const [zoom, setZoom] = useState(location?.state?.zoomLevel ?? 10);
+    const [center, ] = useState(location?.state?.centerMap ?? {lat: 47.3073, lng: -122.2285 });//{lat: 47.606209, lng: -122.332069 });
+    const [zoom, ] = useState(location?.state?.zoomLevel ?? 10);
 
     const getMapOptions = () => {
       return {

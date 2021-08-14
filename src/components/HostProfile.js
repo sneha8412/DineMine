@@ -44,10 +44,10 @@ const HostProfile = (props) => {
 
     useEffect(() => {
         if (location?.state?.hostId){
-            setCurrentHostId(`${location.state.hostId}`);
-            setHostImageUrl(`${BASE_URL}/images/host/${location.state.hostId}`);
+            setCurrentHostId(`${location?.state?.hostId}`);
+            setHostImageUrl(`${BASE_URL}/images/host/${location?.state?.hostId}`);
         }
-    }, [location.state.hostId]);
+    }, [location?.state?.hostId]);
 
     const getHostImageUrls = () => {
         //const hostImg = `${BASE_URL}/${location.state.hostId}`;

@@ -8,8 +8,6 @@ import Home from './components/Home' //check aagin (sneha)
 import { BrowserRouter as Router, Route, Switch, Link, Redirect} from "react-router-dom";
 
 //import Pages
-import HomePage from "./pages"; ///< index.jsx will be automatically imported 
-import SearchResultsPage from './pages/SearchResults';
 import Experience from './components/Experience';
 import Header from './components/Header';
 import Footer from './components/Footer';

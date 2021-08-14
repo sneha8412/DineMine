@@ -79,8 +79,8 @@ function ExperienceForm(props) {
             ...temp
         })
 
-        if (fieldValues == values)
-            return Object.values(temp).every(x => x == "")
+        if (fieldValues === values)
+            return Object.values(temp).every(x => x === "")
     }
 
     const {
@@ -179,7 +179,7 @@ function ExperienceForm(props) {
                 expImageUrls.push(`${BASE_URL}/images/${imgId}`);
             }
 
-            if (expImageUrls.length != experienceImagesUrls.length)
+            if (expImageUrls.length !== experienceImagesUrls.length)
             {
                 setExperienceImagesUrls(expImageUrls);
             }
@@ -197,8 +197,8 @@ function ExperienceForm(props) {
         history.push({
             pathname: "/experience",
             state: { 
-                experienceId: 16, //experienceId
-                userContext: "guest"
+                experienceId: experienceId,
+                userContext: "host"
             }
         });
 

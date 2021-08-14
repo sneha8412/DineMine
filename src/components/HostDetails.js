@@ -76,10 +76,10 @@ function HostDetails(props) {
 
     }
 
-    const handleNameChange = (e) => {
+    const handleFieldChange = (fieldName, e) => {
 
         let hostInfo = hostDetails;
-        hostInfo["name"] = e.target.value;
+        hostInfo[fieldName] = e.target.value;
         setHostDetails(hostInfo);
         setSaveHostDetailsButtonDisabled(false);
     };
@@ -93,7 +93,7 @@ function HostDetails(props) {
             id="standard-read-only-input"
             label="Name"
             defaultValue={hostDetails["name"]}
-            onChange={handleNameChange}
+            onChange={(e) => handleFieldChange("name", e)}
             InputProps={{
                 readOnly: false,
                 }}
@@ -103,8 +103,9 @@ function HostDetails(props) {
             id="standard-read-only-input"
             label="Introduction"
             defaultValue={hostDetails["intro"]}
+            onChange={(e) => handleFieldChange("intro", e)}
             InputProps={{
-                readOnly: true,
+                readOnly: false,
                 }}
           />
           <br />
@@ -112,16 +113,18 @@ function HostDetails(props) {
             id="standard-read-only-input"
             label="Email"
             defaultValue={hostDetails["email"]}
+            onChange={(e) => handleFieldChange("email", e)}
             InputProps={{
-                readOnly: true,
+                readOnly: false,
                 }}
           />
           <TextField
             id="standard-read-only-input"
             label="Phone"
             defaultValue={hostDetails["phone"]}
+            onChange={(e) => handleFieldChange("phone", e)}
             InputProps={{
-                readOnly: true,
+                readOnly: false,
                 }}
           />
           <br />
@@ -129,16 +132,18 @@ function HostDetails(props) {
             id="standard-read-only-input"
             label="Address"
             defaultValue={hostDetails["address"]}
+            onChange={(e) => handleFieldChange("address", e)}
             InputProps={{
-                readOnly: true,
+                readOnly: false,
                 }}
           />
           <TextField
             id="standard-read-only-input"
             label="City"
             defaultValue={hostDetails["city"]}
+            onChange={(e) => handleFieldChange("city", e)}
             InputProps={{
-                readOnly: true,
+                readOnly: false,
                 }}
           />
           <br />

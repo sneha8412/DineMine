@@ -113,7 +113,7 @@ function ExperienceDetails(props) {
                         expImageUrls.push(`${BASE_URL}/images/${imgId}`);
                     }
         
-                    if (expImageUrls.length != experienceImagesUrls.length)
+                    if (expImageUrls.length !== experienceImagesUrls.length)
                     {
                         setExperienceImagesUrls(expImageUrls);
                     }
@@ -223,7 +223,7 @@ function ExperienceDetails(props) {
             <TextField
             id="standard-read-only-input"
             label="City"
-            defaultValue={expDetails["city"]}
+            defaultValue={expDetails["City"]}
             onChange={(e) => handleChange(e, "city")}
             InputProps={{
                 readOnly: (userContext === "guest"),

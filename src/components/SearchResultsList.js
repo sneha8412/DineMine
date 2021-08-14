@@ -1,15 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { withRouter, Route } from 'react-router-dom'
-import SearchResultsPage from '../pages/SearchResults';
+import React, { useEffect } from 'react';
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { useLocation } from 'react-router-dom';
-import ExperienceDetails from './ExperienceDetails';
 import { Button } from "@material-ui/core";
 import SearchResult from "./SearchResult";
 import './SearchResultsList.css';
 import config from '../config.json';
-import SimpleMap from './SimpleMap.js';
 
 const SearchResultsList = () => {
     
@@ -20,18 +16,10 @@ const SearchResultsList = () => {
     const [priceSortOrder, setPriceSortOrder] = React.useState("asc");
     const [cuisineFilter, setCuisineFilter] = React.useState('');
     const [imagesForAllExperiences, setImagesForAllExperiences] = React.useState(new Map());
-    const [numOfExperience, setNumOfExperiences] = React.useState();
-    //const [numOfExpereince, setNumOfExperiences] = React.useState();
+    const [resultsFullyLoaded, setResultsFullyLoaded] = React.useState(false);
+    const [numOfExperiences, setNumOfExperiences] = React.useState(0);
 
-    const BASE_URL = config.SERVER_URL;
-
-    const nextPageEventHandler = event => {
-        history.push({
-            pathname: '/experience',
-            //search: '?query=abc',
-            //state: { query_url: "http://localhost:5000/experiences?id=123" }
-        });
-     };   
+    const BASE_URL = config.SERVER_URL;  
 
     const getAllExperiences = (exp_uri) => {
         axios.get(exp_uri,
@@ -77,6 +65,8 @@ const SearchResultsList = () => {
                     imagesForAllExperiences.set(exp_id, expImageUrl);
                     setImagesForAllExperiences(imagesForAllExperiences);
 
+                    setResultsFullyLoaded(imagesForAllExperiences.size === allExperiences.length);
+
                     console.log(`Setting image url for expId ${exp_id} to: ${imagesForAllExperiences.get(exp_id)}`);
                 }
             },
@@ -88,7 +78,7 @@ const SearchResultsList = () => {
 
     const renderExperienceCards = () => {
 
-        return allExperiences.map((exp) => {
+        return allExperiences?.map((exp) => {
             const expId = exp["Experience ID"];
             let imgHash = Date.now();
             const imgUrl = imagesForAllExperiences.get(expId);
@@ -121,11 +111,9 @@ const SearchResultsList = () => {
         
         console.log("GetAllExperienceList useEffect");
 
-        //refetchEvent();
+        let searchurl = `${BASE_URL}/experiences`;
         const expSearchUrl = location?.state?.searchUrl;
         console.log("expSearchUrl: " + expSearchUrl);
-
-        let searchurl = `${BASE_URL}/experiences`;
 
         if (expSearchUrl && expSearchUrl.length > 0)
         {
@@ -134,7 +122,7 @@ const SearchResultsList = () => {
 
         getAllExperiences(searchurl);
 
-    }, [location?.state?.searchUrl]);
+    }, [BASE_URL, location?.state?.searchUrl]);
 
     const handlePriceSortClick = () => {
 
@@ -176,7 +164,7 @@ const SearchResultsList = () => {
     return (
         <div className='searchPage'>
             <div className='searchPage__info'>
-                <p>{numOfExperience} DineMines found </p>
+                <p>{numOfExperiences} DineMines found </p>
                 <h1>DineMines nearby</h1>
                 <Button variant="outlined">Cancellation Flexibility</Button>
                 <Button variant="outlined" onClick={handleCuisineFilterClick}>Type of Cusine</Button>
@@ -187,7 +175,7 @@ const SearchResultsList = () => {
             </div>
 
             <div>
-                {allExperiences && allExperiences.length > 0 && renderExperienceCards()}
+                {numOfExperiences > 0 && resultsFullyLoaded && renderExperienceCards()}
             </div>
         </div>
     )

@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { FormControlLabel, Grid } from '@material-ui/core';
+import React, { useState } from 'react';
+import { Grid } from '@material-ui/core';
 import { useForm, Form } from './UseForm';
-import RadioGroup from './RadioGroup';
 import Input from './Input'
 import FormButton from './FormButton';
-import { createNewHost } from '../../services/hostService';
-import ImageUpload from '../../components/ImageUpload'
 import { useHistory } from 'react-router-dom';
 import axios from "axios";
+import config from '../../config.json';
+
+const BASE_URL = config.SERVER_URL;
 
 const initialFValues = {
     hostFullname: '',
@@ -18,7 +18,6 @@ const initialFValues = {
     hostCity: ''
 
 }
-
 
 function HostForm() {
 
@@ -46,8 +45,8 @@ function HostForm() {
             ...temp
         })
 
-        if (fieldValues == values)
-            return Object.values(temp).every(x => x == "")
+        if (fieldValues === values)
+            return Object.values(temp).every(x => x === "")
     }
 
     const {
@@ -60,16 +59,7 @@ function HostForm() {
     } = useForm(initialFValues, true, validate);
 
     const handleSubmit = e => {
-        e.preventDefault()
-        
-        //TODO remove after fxiing
-        history.push({
-            pathname: "/hostprofile",
-            state: { 
-                hostImageUploadUrl: `http://localhost:5000/images/host/1/upload`,
-                hostId: 1
-            }
-        });
+        e.preventDefault();
         
         if (validate()){
             // employeeService.insertEmployee(values)
@@ -84,21 +74,18 @@ function HostForm() {
                 "email": values.hostEmail
             }
 
-            axios.post(`http://localhost:5000/hosts`, host)
+            axios.post(`${BASE_URL}/hosts`, host)
               
                 .then((response) => {
 
                     console.log(response.data, '!');
                     const host_id = response.data["host_id"];
                     console.log("form submit handler" + host_id);
-                    //setHostId(host_id);
-                    //setImageUploadUrl(`http://localhost:5000/images/host/${host_id}/upload`);
-                    //resetForm();
 
                     history.push({
                         pathname: "/hostprofile",
                         state: { 
-                            hostImageUploadUrl: `http://localhost:5000/images/host/${host_id}/upload`,
+                            hostImageUploadUrl: `${BASE_URL}/images/host/${host_id}/upload`,
                             hostId: host_id 
                         }
                     });
@@ -116,7 +103,7 @@ function HostForm() {
 
     //     if (values.hostImage)
     //     {   
-    //        const img_upload_url = `http://localhost:5000/images/host/${hostId}/upload`;
+    //        const img_upload_url = `${BASE_URL}/images/host/${hostId}/upload`;
            
     //        axios.post(img_upload_url, { "pic": `${values.hostImage}` })
     //        .then((response) => {

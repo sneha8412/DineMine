@@ -1,7 +1,5 @@
 
 import React, { useState, useEffect } from 'react';
-import SimpleMap from '../components/SimpleMap';
-import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import './ImageUpload.css';
 
@@ -9,10 +7,8 @@ import './ImageUpload.css';
 const ImageUpload = (props) => {
 
   const [imageFile, setImageFile] = useState({});
-  const [uploadedImageId, setUploadedImageId] = useState("");
+  const [, setUploadedImageId] = useState("");
   const [imageDownloadUrls, setImageDownloadUrls] = useState([]);
-
-  // const imageUploadUrl = props.imageUploadUrl; //`http://localhost:5000/images/host/${props.host_id}/upload`;
 
   const handleImageUpload = (e) => {
     e.preventDefault();
@@ -64,12 +60,12 @@ const ImageUpload = (props) => {
   };
 
   useEffect(() => {
-    if (props.getImageUrls)
+    if (props?.getImageUrls)
     {
       const imageUrls = props.getImageUrls();
       setImageDownloadUrls(imageUrls);
     }
-  }, [props.getImageUrls]);
+  }, [props]);
 
   // useEffect(() => {
   //   if (props.imageDownloadUrls)
@@ -85,7 +81,7 @@ const ImageUpload = (props) => {
       return imageDownloadUrls.map((imgUrl) => {
         let imgHash = Date.now();
         let imgLink = `${imgUrl}?${imgHash}`;
-        return (<img key={imgLink} className="image-size" src={imgLink} />);
+        return (<img key={imgLink} className="image-size" src={imgLink} alt="" />);
       });
     }
     else

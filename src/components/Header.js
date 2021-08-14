@@ -29,7 +29,7 @@ function Header(props) {
 
         let searchUrlValue = `${BASE_URL}/experiences`;
         
-        if (citySearch != "")
+        if (citySearch !== "")
         {
             searchUrlValue = `${BASE_URL}/experiences?city=${citySearch}`;
         }

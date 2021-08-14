@@ -19,7 +19,6 @@ const BASE_URL = config.SERVER_URL;
 
 const Experience = (props) => {
 
-    const history = useHistory();
     const location = useLocation();
 
     //console.log("experienceImageUploadUrl: " + location.state.experienceImageUploadUrl); 

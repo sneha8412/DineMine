@@ -33,7 +33,7 @@ function SearchResult({
 
     return (
         <div className='searchResult' onClick={() => handleOnClick(itemId)}>
-            <img src={img} alt="experience image" />
+            <img src={img} alt="" />
             <FavoriteBorderIcon className="searchResult__heart" />
 
             <div className='searchResult__info'>
@@ -55,7 +55,7 @@ function SearchResult({
                         </p>
                     </div>
                     <div className='searchResults__price'>
-                        <h2>{price} / person</h2>
+                        <h2>${price} / person</h2>
                         
                     </div>
                 </div>

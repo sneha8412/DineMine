@@ -117,7 +117,7 @@ function HostExperienceList(props) {
 
     return (
         <div>
-            {hostExperiences && hostExperiences.length > 0 && renderExperienceCards()}
+            {hostExperiences && hostExperiences.length > 0 && imagesForHostExperiences.size === hostExperiences.length && renderExperienceCards()}
         </div>
     );
 };

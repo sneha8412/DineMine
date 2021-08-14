@@ -2,6 +2,9 @@ import React from 'react';
 import { withRouter, Route } from 'react-router-dom'
 import SearchResultsPage from '../pages/SearchResults';
 import { useHistory } from 'react-router-dom';
+import config from '../config.json';
+
+const BASE_URL = SERVER_URL;
 
 const NearbyExperiences = () => {
     
@@ -11,7 +14,7 @@ const NearbyExperiences = () => {
         history.push({
             pathname: '/experience',
             //search: '?query=abc',
-            state: { query_url: "http://localhost:5000/experiences?id=123" }
+            state: { query_url: `${BASE_URL}/experiences?id=123` }
         });
      };
 
