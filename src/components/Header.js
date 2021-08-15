@@ -160,17 +160,19 @@ function Header(props) {
     };
 
     const renderBecomeHostBanner = () => {
-        if (loggedInUser && !loggedInHost)
+        
+        
+        if (!loggedInHost)
         {
             return (<div className="becomeHost__interactive" onClick={handleBecomeHostOnClick}>Become a host</div>);
         }
 
-        if(loggedInHost)
+        if (!loggedInUser)
         {
-            return (<div/>);
+            return (<div className="becomeHost__interactive">Sign in to host</div>);
         }
-
-        return (<div className="becomeHost__interactive">Sign in to host</div>);
+        
+        return (<div/>);
     }
 
 
