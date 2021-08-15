@@ -20,10 +20,17 @@ function GoogleAuth(){
 
     const onSuccess = (googleUser) => {
         setIsLoggedIn(true);
-    const profile = googleUser.getBasicProfile();
+        const profile = googleUser.getBasicProfile();
         setName(profile.getName());
         setEmail(profile.getEmail());
         setImageUrl(profile.getImageUrl());
+    };
+
+    const createOrSignInGoogleUserInDineMine = () => {
+
+        // check if user exists in dinemine db
+        // if not in db, create a user record 
+
     };
 
     const onFailure = () => {
