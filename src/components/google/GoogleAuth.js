@@ -5,7 +5,7 @@ import GoogleLogin from './GoogleLogin';
 import { Avatar } from "@material-ui/core";
 import "./GoogleAuth.css";
 
-function GoogleAuth(){
+function GoogleAuth(props){
     // See: https://console.cloud.google.com/apis/credentials?project=aidacapstone1
     const googleClientId = "153608278319-169t8o4mqbd6lpjhkuqh2lv2n8f2md5r.apps.googleusercontent.com" //process.env.REACT_APP_GOOGLE_CLIENT_ID;
 
@@ -24,13 +24,11 @@ function GoogleAuth(){
         setName(profile.getName());
         setEmail(profile.getEmail());
         setImageUrl(profile.getImageUrl());
-    };
 
-    const createOrSignInGoogleUserInDineMine = () => {
-
-        // check if user exists in dinemine db
-        // if not in db, create a user record 
-
+        if (props.onUserLogIn)
+        {
+            props.onUserLogIn(profile.getName(), profile.getEmail(), profile.getImageUrl());
+        }
     };
 
     const onFailure = () => {
@@ -42,6 +40,12 @@ function GoogleAuth(){
         await googleAuth.signOut();
         setIsLoggedIn(false);
         renderSigninButton(gapi);
+
+        if (props.onUserLogOut)
+        {
+            props.onUserLogOut();
+        }
+
     })();
     };
 

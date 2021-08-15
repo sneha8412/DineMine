@@ -115,7 +115,7 @@ function HostDetails(props) {
             defaultValue={hostDetails["email"]}
             onChange={(e) => handleFieldChange("email", e)}
             InputProps={{
-                readOnly: false,
+                readOnly: true,
                 }}
           />
           <TextField

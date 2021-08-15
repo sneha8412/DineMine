@@ -11,7 +11,11 @@ const Geolocator = props => {
             lat: position.coords.latitude,
             lng: position.coords.longitude
         }
-        setLocation(coordinates)
+        setLocation(coordinates);
+        if (props.getCurrentPosition)
+        {
+            props.getCurrentPosition(coordinates.lat, coordinates.lng);
+        }
     }
 
     useEffect(()=>{
@@ -26,18 +30,18 @@ const Geolocator = props => {
                     }
             });
         }
-    },[])
+    },[]);
 
     return (
         <div>
             <div className="text-center py-4">
                 <h3>
-                  My Current location: Lat: {location.lat}, Lng: {location.lng}
+                  My Location: Lat: {location.lat}, Lng: {location.lng}
                 </h3>
             </div>
-            <div  style={{ height: '100vh', width: '100%' }}>
-                {/* <SimpleMap center={location} locations={[]} /> */}
-            </div>
+            {/* <div  style={{ height: '100vh', width: '100%' }}>
+                <SimpleMap center={location} locations={[]} />
+            </div> */}
         </div>
     )
 }
