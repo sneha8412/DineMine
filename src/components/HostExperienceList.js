@@ -11,6 +11,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
+import { SettingsBrightnessOutlined } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
     margin: {
@@ -28,6 +29,7 @@ function HostExperienceList(props) {
     const classes = useStyles();
 
     const [hostExperiencesWithImages, setHostExperiencesWithImages] = React.useState([]);
+    const [hostId, setHostId] = React.useState("");
 
     const BASE_URL = config.SERVER_URL;
     
@@ -53,6 +55,7 @@ function HostExperienceList(props) {
         
         if (props.hostId)
         {
+            setHostId(props.hostId);
             getHostExperiences();
         }
 
@@ -102,7 +105,7 @@ function HostExperienceList(props) {
                         dinetime={exp["Dine time"]}
                         itemId={expId}
                         guests = {exp["Total number of guests"]}
-                        context="host"
+                        context= { {"hostId": hostId, "type": "host" } }
                         />
                 </div>
             );

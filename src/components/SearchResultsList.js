@@ -72,7 +72,7 @@ const SearchResultsList = () => {
                         cuisine={exp["Cuisine"]}
                         dinetime={exp["Dine time"]}
                         itemId={expId}
-                        context="guest" 
+                        context={{"type": "guest"}} 
                         />
                 </div>
             );

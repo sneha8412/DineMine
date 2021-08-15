@@ -15,7 +15,7 @@ function SearchResult({
     dinetime,
     itemId,
     guests,
-    context = "guest"
+    context
 }) {
 
     const history = useHistory();
