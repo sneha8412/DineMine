@@ -159,9 +159,23 @@ function Header(props) {
         });
     };
 
+    const handleYourProfileOnClick = () => {
+
+        const host_id = loggedInHost["Host ID"];
+
+        history.push({
+            pathname: "/hostprofile",
+            state: { 
+                hostImageUploadUrl: `${BASE_URL}/images/host/${host_id}/upload`,
+                hostId: host_id,
+                userId: loggedInUser["User ID"]
+            }
+        });
+    };
+
+
     const renderBecomeHostBanner = () => {
-        
-        
+
         if (!loggedInHost)
         {
             return (<div className="becomeHost__interactive" onClick={handleBecomeHostOnClick}>Become a host</div>);
@@ -170,6 +184,11 @@ function Header(props) {
         if (!loggedInUser)
         {
             return (<div className="becomeHost__interactive">Sign in to host</div>);
+        }
+
+        if (loggedInHost && loggedInUser)
+        {
+            return (<div className="becomeHost__interactive" onClick={handleYourProfileOnClick}>Your Host Profile</div>);
         }
         
         return (<div/>);

@@ -76,7 +76,7 @@ const HostProfile = (props) => {
 
             <div className="Host__PhotoUpload">
                 <h1>Upload Host Profile Image</h1>
-                <ImageUpload imageUploadUrl={location.state.hostImageUploadUrl} getImageUrls={getHostImageUrls}/>
+                <ImageUpload imageCssClass='host__ProfilePic'  imageUploadUrl={location.state.hostImageUploadUrl} getImageUrls={getHostImageUrls}/>
             </div>
 
             <div className="your__experiences">

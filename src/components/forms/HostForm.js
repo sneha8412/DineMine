@@ -20,12 +20,14 @@ function HostForm() {
     const [hostId, setHostId] = useState("");
     const [loggedInUser, setLoggedInUser] = useState(location?.state?.loggedInUser);
 
+
+
     const initialFValues = {
-        hostFullname: loggedInUser["Full name"] ?? "",
+        hostFullname: (loggedInUser && loggedInUser["Full name"]) ?? "",
         hostPhone: '',
         hostIntroduction: '',
         hostAddress: '',
-        hostEmail: loggedInUser["Email"] ?? "",
+        hostEmail: (loggedInUser && loggedInUser["Email"]) ?? "",
         hostCity: ''
     
     }

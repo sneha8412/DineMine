@@ -1,3 +1,10 @@
+.host__ProfilePic{
+    height: 200px;
+    width: 180px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
 .image-size{
     height: 200px;
     width: 350px;

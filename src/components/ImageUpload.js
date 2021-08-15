@@ -9,6 +9,7 @@ const ImageUpload = (props) => {
   const [imageFile, setImageFile] = useState({});
   const [, setUploadedImageId] = useState("");
   const [imageDownloadUrls, setImageDownloadUrls] = useState([]);
+  const [imageCssClass, setImageCssClass] = useState("image-size");
 
   const handleImageUpload = (e) => {
     e.preventDefault();
@@ -65,6 +66,12 @@ const ImageUpload = (props) => {
       const imageUrls = props.getImageUrls();
       setImageDownloadUrls(imageUrls);
     }
+
+    if (props?.imageCssClass)
+    {
+      setImageCssClass(props.imageCssClass);
+    }
+
   }, [props]);
 
   // useEffect(() => {
@@ -81,7 +88,7 @@ const ImageUpload = (props) => {
       return imageDownloadUrls.map((imgUrl) => {
         let imgHash = Date.now();
         let imgLink = `${imgUrl}?${imgHash}`;
-        return (<img key={imgLink} className="image-size" src={imgLink} alt="" />);
+        return (<img key={imgLink} className={imageCssClass} src={imgLink} alt="" />);
       });
     }
     else
