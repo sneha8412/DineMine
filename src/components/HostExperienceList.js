@@ -7,14 +7,27 @@ import ExperienceDetails from './ExperienceDetails';
 import SearchResult from './SearchResult';
 import './HostExperienceList.css';
 import config from '../config.json';
+import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton';
+import DeleteIcon from '@material-ui/icons/Delete';
+
+const useStyles = makeStyles((theme) => ({
+    margin: {
+      margin: theme.spacing(1),
+    },
+    extendedIcon: {
+      marginRight: theme.spacing(1),
+    },
+  }));
 
 function HostExperienceList(props) {
 
     const history = useHistory();
     const location = useLocation();
+    const classes = useStyles();
 
-    const [hostExperiences, setHostExperiences] = React.useState([]);
-    const [imagesForHostExperiences, setImagesForHostExperiences] = React.useState(new Map());
+    const [hostExperiencesWithImages, setHostExperiencesWithImages] = React.useState([]);
 
     const BASE_URL = config.SERVER_URL;
     
@@ -24,49 +37,11 @@ function HostExperienceList(props) {
 
         }).then((response) => {
 
-                console.log("Get Host Experiences: " + response?.data);
-                setHostExperiences(response?.data);
-
-                let hostExpImages = []
-
-                for (let i = 0; i < response?.data?.length; i++)
-                {
-                    const exp = response?.data[i];
-                    const exp_id = exp["Experience ID"];
-
-                    updateMainImageUrlForExperience(exp_id);
-                }
+                console.log("Get Host Experiences With Images: " + response?.data);
+                setHostExperiencesWithImages(response?.data);
             },
             (error) => {
                 console.log("Get Host Experiences: " + error);
-            }
-        );
-    };
-
-    const updateMainImageUrlForExperience = (exp_id) => {
-
-        axios.get(`${BASE_URL}/images/experience/${exp_id}`).then((response) => {
-
-                console.log("Get Experience images: " + response.data);
-
-                const expImages = response.data;
-
-                if (expImages && expImages.length > 0)
-                {
-                    const firstExpImage = expImages[0];
-                    const imgId = firstExpImage["id"];
-                    const expImageUrl = `${BASE_URL}/images/${imgId}`;
-
-                    console.log("Main experience image id: " + imgId);
-
-                    imagesForHostExperiences.set(exp_id, expImageUrl);
-                    setImagesForHostExperiences(imagesForHostExperiences);
-
-                    console.log(`Setting image url for expId ${exp_id} to: ${imagesForHostExperiences.get(exp_id)}`);
-                }
-            },
-            (error) => {
-                console.log("Get Experience images: " + error);
             }
         );
     };
@@ -83,26 +58,45 @@ function HostExperienceList(props) {
 
     }, [props.hostId]);
 
+    const generateRandomRating = () => {
+        const randomRating = Math.random() * 5;
+        const roundedRandomRating = Math.round(randomRating * 100) / 100;
+        return roundedRandomRating;
+    };
+
+    const handleDeleteExperience = (expIdToDelete) => {
+
+        axios.delete(`${BASE_URL}/experiences/${expIdToDelete}`).then((response) => {
+
+                console.log("Delete Experience id: " + expIdToDelete);
+                getHostExperiences();
+            },
+            (error) => {
+                console.log("Error Delete Experience id:: " + error);
+            }
+        );
+    };
+
     const renderExperienceCards = () => {
 
-        return hostExperiences.map((exp) => {
+        return hostExperiencesWithImages?.map((exp) => {
             const expId = exp["Experience ID"];
             let imgHash = Date.now();
-            const imgUrl = imagesForHostExperiences.get(expId);
-            let hashImgUrl = "";
-            if (imgUrl){
-                hashImgUrl = `${imgUrl}?${imgHash}`;
-            }
-            console.log(`render image url for ${expId}: " + ${hashImgUrl}`);
+            const expImageId = exp["ImageId"];
+            const imgUrl = `${BASE_URL}/images/${expImageId}?${imgHash}`;
+            console.log(`render image url for ${expId}: " + ${imgUrl}`);
             return (
                 <div>
+                    <IconButton aria-label="delete" className={classes.margin} onClick={() => handleDeleteExperience(expId)}>
+                        <DeleteIcon />
+                    </IconButton>
                     <SearchResult
                         key={expId}
-                        img={hashImgUrl}
+                        img={imgUrl}
                         location={exp["City"]}
                         title={exp["Title"]}
                         description={exp["Description"]}
-                        star={4.73}
+                        star={generateRandomRating()}
                         price={exp["Price"]}
                         cuisine={exp["Cuisine"]}
                         dinetime={exp["Dine time"]}
@@ -117,7 +111,7 @@ function HostExperienceList(props) {
 
     return (
         <div>
-            {hostExperiences && hostExperiences.length > 0 && imagesForHostExperiences.size === hostExperiences.length && renderExperienceCards()}
+            {renderExperienceCards()}
         </div>
     );
 };
