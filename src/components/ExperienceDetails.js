@@ -144,7 +144,7 @@ function ExperienceDetails(props) {
 
     const showExperiencePhotos = () => {
 
-        return experienceImagesUrls.map((imgUrl) => {
+        return experienceImagesUrls?.map((imgUrl) => {
 
             let imgHash = Date.now();
             const hashedImgUrl = `${imgUrl}?${imgHash}`;
@@ -252,7 +252,7 @@ function ExperienceDetails(props) {
                 {expDetails && showExperienceDetails()}   
             </div>
             <div>
-                {experienceImagesUrls && experienceImagesUrls.length > 0 && showExperiencePhotos()}
+                {showExperiencePhotos()}
             </div>
             <div className="add_to_cart_button">
                 {userContext === "guest" && showAddToCart()}

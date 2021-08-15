@@ -108,21 +108,42 @@ function ExperienceForm(props) {
                 "Total number of guests":values.guests
             }
 
-            axios.post(`${BASE_URL}/experiences/hosts/${hostId}`, experience).then((response) => {
+            if (experienceId && experienceId !== "")
+            {
+                axios.put(`${BASE_URL}/experiences/${experienceId}`, experience).then((response) => {
 
-                    console.log(response.data, '!');
+                    console.log("updated experience: " + response.data);
                     const exp_id = response.data["experience_id"];
                     setExperienceId(exp_id);
 
-                    console.log("new experience post to server handler" + exp_id);
+                    console.log("new experience PUT to server handler" + exp_id);
 
-                    getExperienceImageUrls(exp_id);
+                    //getExperienceImageUrls(exp_id);
 
                     setPublishButtonDisabled(false);                    
                 }, 
                 (error) => {
                     console.log(error);
                 });
+            }
+            else
+            {
+                axios.post(`${BASE_URL}/experiences/hosts/${hostId}`, experience).then((response) => {
+
+                        console.log(response.data, '!');
+                        const exp_id = response.data["experience_id"];
+                        setExperienceId(exp_id);
+
+                        console.log("new experience post to server handler" + exp_id);
+
+                        //getExperienceImageUrls(exp_id);
+
+                        setPublishButtonDisabled(false);                    
+                    }, 
+                    (error) => {
+                        console.log(error);
+                    });
+            }
         }
     };
 
