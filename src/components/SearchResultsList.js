@@ -157,6 +157,9 @@ const SearchResultsList = () => {
                         <Dropdown.Item className='Dropdown__item' as="button" onClick={() => handleCuisineSelect("Italian")}>Italian</Dropdown.Item>
                         <Dropdown.Item className='Dropdown__item' as="button" onClick={() => handleCuisineSelect("Mexican")}>Mexican</Dropdown.Item>
                         <Dropdown.Item className='Dropdown__item' as="button" onClick={() => handleCuisineSelect("Thai")}>Thai</Dropdown.Item>
+                        <Dropdown.Item className='Dropdown__item' as="button" onClick={() => handleCuisineSelect("Mediterranean")}>Mediterranean</Dropdown.Item>
+                        <Dropdown.Item className='Dropdown__item' as="button" onClick={() => handleCuisineSelect("Chinese")}>Chinese</Dropdown.Item>
+                        
                     </DropdownButton>
                     </div>
                 </Button>
