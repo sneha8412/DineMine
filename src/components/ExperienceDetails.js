@@ -24,11 +24,19 @@ function ExperienceDetails(props) {
     const history = useHistory();
     const location = useLocation();
 
-    const [expDetails, setExpDetails] = React.useState({});
+    const [expDetails, setExpDetails] = React.useState();
     const [experienceId, setExperienceId] = useState(); 
     const [userContext, setUserContext] = useState({});
 
     const [expDetailsButtonDisabled, setSaveExpDetailsButtonDisabled] = React.useState(true);
+
+    const [title, setTitle] = useState();
+    const [description, setDescription] = useState();
+    const [numGuests, setNumGuests] = useState();
+    const [price, setPrice] = useState();
+    const [cuisine, setCuisine] = useState();
+    const [dineTime, setDineTime] = useState();
+    const [city, setCity] = useState();
 
     const BASE_URL = config.SERVER_URL;
     const classes = useStyles();
@@ -36,9 +44,14 @@ function ExperienceDetails(props) {
     const getExperienceDetails = (expId) => {
         axios.get(`${BASE_URL}/experiences/${expId}`).then((response) => {
 
-                console.log("Get Exp Details: " + response.data);
-                setExpDetails(response.data);
-                setExperienceId(response.data["Experience ID"]);
+                console.log("Get Exp Details: " + response?.data);
+                const exp = response?.data; 
+
+                setTitle(exp["Title"]);
+
+
+                setExpDetails(response?.data);
+                setExperienceId(response?.data["Experience ID"]);
             },
             (error) => {
                 console.log("Get Exp Details: " + error);
@@ -58,20 +71,30 @@ function ExperienceDetails(props) {
 
         setUserContext(location?.state?.userContext);
 
-    }, []);
+    }, [location?.state]);
 
-    
     const saveExpDetailChanges = (e) => {
         
         e.preventDefault();
 
+        const updatedExperienceDetails = {
+            "Title": title,
+            "Price": price,
+            "Description": description,
+            "Cuisine": cuisine,
+            "Total number of guests": numGuests,
+            "Dine time": dineTime,
+            "City": city
+        };
+
         axios.put(
             `${BASE_URL}/experiences/${experienceId}`, 
-            expDetails
+            updatedExperienceDetails
         ).then((response) => {
 
                 console.log("Put Exp Details: " + response.data);
-                setExpDetails(response.data);
+                getExperienceDetails();
+                //setExpDetails(response.data);
                 setSaveExpDetailsButtonDisabled(true);
             },
             (error) => {
@@ -83,9 +106,30 @@ function ExperienceDetails(props) {
 
     const handleChange = (e, fieldName) => {
 
-        let expInfo = expDetails;
-        expInfo[fieldName] = e.target.value;
-        setExpDetails(expInfo);
+        switch(fieldName){
+            case 'Title':
+                setTitle(e.target.value);
+                break;
+            case 'Description':
+                setDescription(e.target.value);
+                break;
+            case 'Price':
+                setPrice(parseFloat(e.target.value));
+                break;
+            case 'City':
+                setCity(e.target.value);
+                break;
+            case 'Cuisine':
+                setCuisine(e.target.value);
+                break;
+            case 'DineTime':
+                setDineTime(e.target.value);
+                break;
+            case 'NumGuests':
+                setNumGuests(e.target.value);
+                break;
+        };
+
         setSaveExpDetailsButtonDisabled(false);
     };
 
@@ -107,7 +151,7 @@ function ExperienceDetails(props) {
 
     const getExperienceImageUrls = () => {
 
-        let imageIds = expDetails["ImageIds"] ?? [];
+        let imageIds = (expDetails && expDetails["ImageIds"]) ?? [];
         let imageUrls = []
         if (imageIds.length > 0)
         {
@@ -166,38 +210,7 @@ function ExperienceDetails(props) {
     const showExperienceDetails = () => {
         return(
         <div>
-            <form noValidate>
-                <label>
-                    Name: <input type="text" value={expDetails["Title"]} name="Title" />
-                </label>
-                <br />
-                <label>
-                    Price: <input type="text" value={expDetails["Price"]} name="Price" />
-                </label>
-                <br/>
-                <label>
-                    Dine Time: <input type="text" value={expDetails["Dine time"]} name="DineTime" />
-                </label>
-                <br />
-                <label>
-                    Cuisine: <input type="text" value={expDetails["Cuisine"]} name="Cuisine" />
-                </label>
-                <br/>
-                <label>
-                    Details: <input type="text" value={expDetails["Details"]} name="Details" />
-                </label>
-                <br/>
-                <label>
-                    City: <input type="text" value={expDetails["City"]} name="City" />
-                </label>
-                <br />
-                <label>
-                    Total number of guests: <input type="text" value={expDetails["Total number of guests"]} name="Total number of guests" />
-                </label>
-                <div>{showExpDetailSaveButton()}</div>
-            </form>
-            
-        {/* <form className={classes.root} noValidate autoComplete="off">
+        <form className={classes.root} noValidate autoComplete="off">
         <div>
               <TextField
                   id="standard-read-only-input"
@@ -212,10 +225,10 @@ function ExperienceDetails(props) {
               <TextField
                   id="standard-read-only-input"
                   label="Price"
-                  defaultValue={expDetails["Price"]}
+                  defaultValue="hello"
                   onChange={(e) => handleChange(e, "Price")}
                   InputProps={{
-                      readOnly: (userContext.type === "guest"),
+                      readOnly: userContext.type === "guest",
                       }}
               />
               <br />
@@ -271,7 +284,7 @@ function ExperienceDetails(props) {
 
                   {showExpDetailSaveButton()}
                   </div>
-              </form> */}
+              </form>
         </div>); 
     };
 

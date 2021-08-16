@@ -72,7 +72,8 @@ const SearchResultsList = () => {
                         cuisine={exp["Cuisine"]}
                         dinetime={exp["Dine time"]}
                         itemId={expId}
-                        context={{"type": "guest"}} 
+                        guests={exp["Total number of guests"]}
+                        context="guest" 
                         />
                 </div>
             );

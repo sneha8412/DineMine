@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Grid } from '@material-ui/core';
 import { useForm, Form } from './UseForm';
 import Input from './Input'
@@ -6,26 +6,40 @@ import FormButton from './FormButton';
 import { useHistory } from 'react-router-dom';
 import axios from "axios";
 import config from '../../config.json';
+import { useLocation } from 'react-router-dom';
 
 const BASE_URL = config.SERVER_URL;
-
-const initialFValues = {
-    hostFullname: '',
-    hostPhone: '',
-    hostIntroduction: '',
-    hostAddress: '',
-    hostEmail:'',
-    hostCity: ''
-
-}
 
 function HostForm() {
 
     const [imageUploadUrl, setImageUploadUrl] = useState("");
 
     const history = useHistory();
+    const location = useLocation();
 
     const [hostId, setHostId] = useState("");
+    const [loggedInUser, setLoggedInUser] = useState(location?.state?.loggedInUser);
+
+
+
+    const initialFValues = {
+        hostFullname: (loggedInUser && loggedInUser["Full name"]) ?? "",
+        hostPhone: '',
+        hostIntroduction: '',
+        hostAddress: '',
+        hostEmail: (loggedInUser && loggedInUser["Email"]) ?? "",
+        hostCity: ''
+    
+    }
+
+    useEffect(() => {
+
+        if (location?.state?.loggedInUser)
+        {
+            setLoggedInUser(location?.state?.loggedInUser);
+        }
+
+    }, [location?.state?.loggedInUser]);
 
     const validate = (fieldValues = values) => {
         let temp = { ...errors }
@@ -71,7 +85,8 @@ function HostForm() {
                 "intro": values.hostIntroduction,
                 "city": values.hostCity,
                 "phone": values.hostPhone,
-                "email": values.hostEmail
+                "email": values.hostEmail,
+                "user_id": loggedInUser["User ID"] ?? ""
             }
 
             axios.post(`${BASE_URL}/hosts`, host)
