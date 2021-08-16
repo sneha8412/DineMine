@@ -230,7 +230,7 @@ function ExperienceDetails(props) {
               <TextField
                   id="standard-read-only-input"
                   label="Price"
-                  defaultValue="hello"
+                  defaultValue={expDetails["Price"]}
                   onChange={(e) => handleChange(e, "Price")}
                   InputProps={{
                       readOnly: userContext.type === "guest",
@@ -259,7 +259,7 @@ function ExperienceDetails(props) {
               <br />
               <TextField
                   id="standard-read-only-input"
-                  label="Details"
+                  label="Description"
                   defaultValue={expDetails["Description"]}
                   onChange={(e) => handleChange(e, "Description")}
                   InputProps={{
