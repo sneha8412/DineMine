@@ -89,12 +89,11 @@ function HostExperienceList(props) {
             const imgUrl = `${BASE_URL}/images/${expImageId}?${imgHash}`;
             console.log(`render image url for ${expId}: " + ${imgUrl}`);
             return (
-                <div>
+                <div key={expId}>
                     <IconButton aria-label="delete" className={classes.margin} onClick={() => handleDeleteExperience(expId)}>
                         <DeleteIcon />
                     </IconButton>
                     <SearchResult
-                        key={expId}
                         img={imgUrl}
                         location={exp["City"]}
                         title={exp["Title"]}
@@ -105,7 +104,7 @@ function HostExperienceList(props) {
                         dinetime={exp["Dine time"]}
                         itemId={expId}
                         guests = {exp["Total number of guests"]}
-                        context= { {"hostId": hostId, "type": "host" } }
+                        context= { {hostId: hostId, type: "host" } }
                         />
                 </div>
             );

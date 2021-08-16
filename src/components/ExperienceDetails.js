@@ -77,6 +77,11 @@ function ExperienceDetails(props) {
         
         e.preventDefault();
 
+        if (!experienceId || experienceId === "")
+        {
+            return;
+        }
+
         const updatedExperienceDetails = {
             "Title": title,
             "Price": price,
@@ -218,7 +223,7 @@ function ExperienceDetails(props) {
                   defaultValue={expDetails["Title"]}
                   onChange={(e) => handleChange(e, "Title")}
                   InputProps={{
-                      readOnly: false //(userContext.type === "guest"),
+                      readOnly: (userContext.type === "guest"),
                       }}
               />
               <br />
@@ -236,7 +241,7 @@ function ExperienceDetails(props) {
                   id="standard-read-only-input"
                   label="Dine Time"
                   defaultValue={expDetails["Dine time"]}
-                  onChange={(e) => handleChange(e, "Dine time")}
+                  onChange={(e) => handleChange(e, "DineTime")}
                   InputProps={{
                       readOnly: (userContext.type === "guest"),
                       }}
@@ -266,7 +271,7 @@ function ExperienceDetails(props) {
                   id="standard-read-only-input"
                   label="City"
                   defaultValue={expDetails["City"]}
-                  onChange={(e) => handleChange(e, "city")}
+                  onChange={(e) => handleChange(e, "City")}
                   InputProps={{
                       readOnly: (userContext.type === "guest"),
                       }}
@@ -276,7 +281,7 @@ function ExperienceDetails(props) {
                   id="standard-read-only-input"
                   label="Total number of guests"
                   defaultValue={expDetails["Total number of guests"]}
-                  onChange={(e) => handleChange(e, "Total number of guests")}
+                  onChange={(e) => handleChange(e, "NumGuests")}
                   InputProps={{
                       readOnly: (userContext.type === "guest"),
                       }}
