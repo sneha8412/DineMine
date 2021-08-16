@@ -24,12 +24,22 @@ function ExperienceDetails(props) {
     const location = useLocation();
 
     const [expDetails, setExpDetails] = React.useState();
+    
     const [experienceId, setExperienceId] = useState(); // Debug: 16
     const [experienceImagesUrls, setExperienceImagesUrls] = useState([]);
     const [userContext, setUserContext] = useState("guest");
 
     const [expDetailsButtonDisabled, setSaveExpDetailsButtonDisabled] = React.useState(true);
     //const [isLoading, setIsLoading] = React.useState(true);
+
+    const [title, setTitle] = useState();
+    const [description, setDescription] = useState();
+    const [numGuests, setNumGuests] = useState();
+    const [price, setPrice] = useState();
+    const [cuisine, setCuisine] = useState();
+    const [dineTime, setDineTime] = useState();
+    const [city, setCity] = useState();
+
 
     const BASE_URL = config.SERVER_URL;
     const classes = useStyles();
@@ -71,9 +81,19 @@ function ExperienceDetails(props) {
         
         e.preventDefault();
 
+        const updatedExperienceDetails = {
+            "Title": title,
+            "Price": price,
+            "Description": description,
+            "Cuisine": cuisine,
+            "Total number of guests": numGuests,
+            "Dine time": dineTime,
+            "City": city
+        };
+
         axios.put(
             `${BASE_URL}/experiences/${experienceId}`, 
-            expDetails
+            updatedExperienceDetails
         ).then((response) => {
 
                 console.log("Put Exp Details: " + response.data);
@@ -89,9 +109,30 @@ function ExperienceDetails(props) {
 
     const handleChange = (e, fieldName) => {
 
-        let expInfo = expDetails;
-        expInfo[fieldName] = e.target.value;
-        setExpDetails(expInfo);
+        switch(fieldName){
+            case 'Title':
+                setTitle(e.target.value);
+                break;
+            case 'Description':
+                setDescription(e.target.value);
+                break;
+            case 'Price':
+                setPrice(parseFloat(e.target.value));
+                break;
+            case 'City':
+                setCity(e.target.value);
+                break;
+            case 'Cuisine':
+                setCuisine(e.target.value);
+                break;
+            case 'DineTime':
+                setDineTime(e.target.value);
+                break;
+            case 'NumGuests':
+                setNumGuests(e.target.value);
+                break;
+        };
+
         setSaveExpDetailsButtonDisabled(false);
     };
 
@@ -194,7 +235,7 @@ function ExperienceDetails(props) {
             id="standard-read-only-input"
             label="Dine Time"
             defaultValue={expDetails["Dine time"]}
-            onChange={(e) => handleChange(e, "Dine time")}
+            onChange={(e) => handleChange(e, "DineTime")}
             InputProps={{
                 readOnly: (userContext === "guest"),
                 }}
@@ -224,7 +265,7 @@ function ExperienceDetails(props) {
             id="standard-read-only-input"
             label="City"
             defaultValue={expDetails["City"]}
-            onChange={(e) => handleChange(e, "city")}
+            onChange={(e) => handleChange(e, "City")}
             InputProps={{
                 readOnly: (userContext === "guest"),
                 }}
@@ -234,7 +275,7 @@ function ExperienceDetails(props) {
             id="standard-read-only-input"
             label="Total number of guests"
             defaultValue={expDetails["Total number of guests"]}
-            onChange={(e) => handleChange(e, "Total number of guests")}
+            onChange={(e) => handleChange(e, "NumGuests")}
             InputProps={{
                 readOnly: (userContext === "guest"),
                 }}
