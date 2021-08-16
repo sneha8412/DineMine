@@ -1,3 +1,9 @@
+
+.drop-menu-container {
+  z-index: 1000;
+  
+}
+
 .searchPage__info {
     padding: 20px;
   }
@@ -59,4 +65,15 @@
   font-size: 1rem;
   border-radius: .25rem;
   transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.Dropdown__item{
+  background-color: rgba(243, 185, 99, 0.967);
+  padding: 10px;
+  border-radius: .25rem;
+  border-color: grey;
+  cursor: pointer;
+  text-align: center;
+  width: 100px;
+  
 }

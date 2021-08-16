@@ -149,22 +149,26 @@ const SearchResultsList = () => {
                 <h1>DineMines nearby</h1>
                 <Button variant="outlined">Cancellation Flexibility</Button>
                 <Button variant="outlined">
+                    <div class="drop-menu-container">
                     <DropdownButton id="dropdown-item-button" title="Cuisine">
                         {/* <Dropdown.ItemText>Dropdown item text</Dropdown.ItemText> */}
-                        <Dropdown.Item as="button" onClick={() => handleCuisineSelect("American")}>American</Dropdown.Item>
-                        <Dropdown.Item as="button" onClick={() => handleCuisineSelect("Indian")}>Indian</Dropdown.Item>
-                        <Dropdown.Item as="button" onClick={() => handleCuisineSelect("Italian")}>Italian</Dropdown.Item>
-                        <Dropdown.Item as="button" onClick={() => handleCuisineSelect("Mexican")}>Mexican</Dropdown.Item>
-                        <Dropdown.Item as="button" onClick={() => handleCuisineSelect("Thai")}>Thai</Dropdown.Item>
+                        <Dropdown.Item className='Dropdown__item' as="button" onClick={() => handleCuisineSelect("American")}>American</Dropdown.Item>
+                        <Dropdown.Item className='Dropdown__item' as="button" onClick={() => handleCuisineSelect("Indian")}>Indian</Dropdown.Item>
+                        <Dropdown.Item className='Dropdown__item' as="button" onClick={() => handleCuisineSelect("Italian")}>Italian</Dropdown.Item>
+                        <Dropdown.Item className='Dropdown__item' as="button" onClick={() => handleCuisineSelect("Mexican")}>Mexican</Dropdown.Item>
+                        <Dropdown.Item className='Dropdown__item' as="button" onClick={() => handleCuisineSelect("Thai")}>Thai</Dropdown.Item>
                     </DropdownButton>
+                    </div>
                 </Button>
                 <Button variant="outlined">
+                    <div class="drop-menu-container">
                     <DropdownButton id="dropdown-item-button" title="Dine Times">
-                        <Dropdown.Item as="button" onClick={() => handleDineTimeSelect("Breakfast")}>Breakfast</Dropdown.Item>
-                        <Dropdown.Item as="button" onClick={() => handleDineTimeSelect("Brunch")}>Brunch</Dropdown.Item>
-                        <Dropdown.Item as="button" onClick={() => handleDineTimeSelect("Lunch")}>Lunch</Dropdown.Item>
-                        <Dropdown.Item as="button" onClick={() => handleDineTimeSelect("Dinner")}>Dinner</Dropdown.Item>
+                        <Dropdown.Item className='Dropdown__item' as="button" onClick={() => handleDineTimeSelect("Breakfast")}>Breakfast</Dropdown.Item>
+                        <Dropdown.Item className='Dropdown__item' as="button" onClick={() => handleDineTimeSelect("Brunch")}>Brunch</Dropdown.Item>
+                        <Dropdown.Item className='Dropdown__item' as="button" onClick={() => handleDineTimeSelect("Lunch")}>Lunch</Dropdown.Item>
+                        <Dropdown.Item className='Dropdown__item' as="button" onClick={() => handleDineTimeSelect("Dinner")}>Dinner</Dropdown.Item>
                     </DropdownButton>
+                    </div>
                 </Button>
                 <Button variant="outlined" onClick={handlePriceSortClick}>Sort by Price</Button>
                 <Button variant="outlined" onClick={handleSimpleMapClick}>View on Map</Button>
