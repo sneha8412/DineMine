@@ -25,13 +25,13 @@ Update and Delete an experience if required
 
 
 ### DEPENDENCIES 
-This app depends on 
-  1. React
+This app uses: 
+  1. React js
   2. Javascript Date Utility library
   3. React Material UI
   4. React Bootstrap
-  5. Google simple maps API
-  6. Google Geolocater
+  5. Google maps API
+  6. Google Geo-locater API
   7. Google oAuth 
   
   **Deployment:**
@@ -79,11 +79,10 @@ In the terminal run command
    
    npm install react-bootstrap@next bootstrap@5.0.2
    ```
-   in the app import: 
    
 5. **SETUP Google oAuth**
 
-   1. Install ngrok 
+   1. Install ngrok for localhost testing only
 
    [https://dashboard.ngrok.com/get-started/setup](https://dashboard.ngrok.com/get-started/setup)
 
