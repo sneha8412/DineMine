@@ -1,4 +1,5 @@
-###Dinemine 
+### <img width="634" alt="Screen Shot 2021-08-17 at 12 44 53 PM" src="https://user-images.githubusercontent.com/68921168/129790716-a556f432-f1fd-4753-bd6d-3d50397669b9.png">
+Dinemine 
    is a multi-page web-app 
 
 There are two aspects of this app -
@@ -13,7 +14,16 @@ Update and Delete an experience if required
 
 <img width="1321" alt="Screen Shot 2021-08-17 at 11 49 28 AM" src="https://user-images.githubusercontent.com/68921168/129783580-404fa333-9f13-43cf-9703-b320993097d6.png">
 
+
+### WIREFRAME
+
 <img width="1409" alt="Screen Shot 2021-08-17 at 11 50 42 AM" src="https://user-images.githubusercontent.com/68921168/129783760-33ea2e96-3247-4584-8559-0f2008f0c781.png">
+
+### REACT DATA FLOW DIAGRAM
+
+<img width="600" alt="Screen Shot 2021-08-17 at 12 50 07 PM" src="https://user-images.githubusercontent.com/68921168/129791071-3f9e9e6b-ab15-4131-b261-2d5890734fdd.png">
+
+
 
 ### DEPENDENCIES 
 This app depends on 
