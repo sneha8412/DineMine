@@ -51,7 +51,8 @@ In the terminal run command
    
    npm start
    ```
-2. **SET UP Material UI **
+2. **SET UP Material UI**
+
    ```jsx
    npm install @material-ui/core
 
