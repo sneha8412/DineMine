@@ -37,11 +37,18 @@ This app depends on
   7. Google Firebase
  
    
-### SETUP
+### SETUP - This project was bootstrapped with Create React App
 In the terminal run command 
+
 1. SET UP React 
    ```jsx
    npm install
+   
+   npx create-react-app my-app
+   
+   cd my-app
+   
+   npm start
    ```
 2. SET UP Material UI 
    ```jsx
