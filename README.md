@@ -81,13 +81,14 @@ In the terminal run command
    ```
 
    Forwarding address is generated
-
-   ![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/752c49ee-d690-4999-a9b4-2c9c74cccc9b/Screen_Shot_2021-07-30_at_3.08.47_PM.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/752c49ee-d690-4999-a9b4-2c9c74cccc9b/Screen_Shot_2021-07-30_at_3.08.47_PM.png)
    
+<img width="654" alt="Screen Shot 2021-08-17 at 12 40 24 PM" src="https://user-images.githubusercontent.com/68921168/129789830-2c75fd8b-c986-47cf-b028-c45e3f43f782.png">
 
-   1. copy paste the blue code into google credentials page - create credentials (dropdown oAuth) basically add the ngrok forwarding address in          the URI and authorized js origins and authorised redirect URI
+   
+   1. copy paste the blue code into google credentials page - create credentials (dropdown oAuth) basically add the ngrok forwarding address in the URI and authorized js origins and authorised redirect URI
 
-   ![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/640f0e9d-e12c-4fee-94e9-e68132fe81e1/Screen_Shot_2021-07-30_at_3.11.12_PM.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/640f0e9d-e12c-4fee-94e9-e68132fe81e1/Screen_Shot_2021-07-30_at_3.11.12_PM.png)
+ <img width="635" alt="Screen Shot 2021-08-17 at 12 39 51 PM" src="https://user-images.githubusercontent.com/68921168/129789790-03b92f70-3973-40b5-9209-0b199985e5ea.png">
+
    
    2. copy paste
 
