@@ -31,11 +31,10 @@ This app uses:
   3. React Material UI
   4. React Bootstrap
   5. Google maps API
-  6. Google Geo-locater API
-  7. Google oAuth 
+  6. Google oAuth 
   
   **Deployment:**
-  8. Google Firebase
+  7. Google Firebase
  
    
 ### SETUP - This project was bootstrapped with Create React App
@@ -78,9 +77,22 @@ In the terminal run command
    ```jsx
    
    npm install react-bootstrap@next bootstrap@5.0.2
-   ```
    
-5. **SETUP Google oAuth**
+    ```
+    
+5. **SETUP GOOGLE MAPS**
+
+    https://developers.google.com/maps/documentation/javascript/get-api-key
+    ```jsx
+    npm i google-maps-react --s
+    ```
+    
+    **Get google map API Key**
+    
+    https://developers.google.com/maps/documentation/javascript/get-api-key#creating-api-keys
+    
+
+6. **SETUP Google oAuth**
 
    1. Install ngrok for localhost testing only
 
@@ -122,24 +134,9 @@ In the terminal run command
 Safari is not reliable when it comes to testing front end - use google chrome
 
 when using incognito mode you need to enable the cookies in react otherwise the google authentication will give error since google chrome has cookies disabled by default
-
-6. **SETUP GOOGLE MAPS**
-
-    https://developers.google.com/maps/documentation/javascript/get-api-key
-    ```jsx
-    npm i google-maps-react --s
-    ```
     
-    **Get google map API Key**
-    
-    https://developers.google.com/maps/documentation/javascript/get-api-key#creating-api-keys
-    
-    
-    
-
-8. **SETUP GOOGLE GEOLOCATION**
  
-10. **SETUP FIREBASE DEPLOYMENT**
+7. **SETUP FIREBASE DEPLOYMENT**
 
     resource: https://www.geeksforgeeks.org/how-to-deploy-react-project-on-firebase/
 
