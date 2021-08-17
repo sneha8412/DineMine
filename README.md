@@ -31,11 +31,11 @@ This app depends on
 ### SETUP
 In the terminal run command 
 1. SET UP React 
-   
+   ```jsx
    npm install
-
+   ```
 2. SET UP Material UI 
-
+   ```jsx
    npm install @material-ui/core
 
    npx browserslist@latest --update-db
@@ -47,24 +47,23 @@ In the terminal run command
    npm install react-transition-group //renders multiple conditional logic
 
    npm start
+   ```
 
 3. SET UP Date 
-
+   ```jsx
    npm i date-fns
    
    npm audit fix --force
+   ```
    
 4. SET UP REACT BOOTSTRAP
+   ```jsx
    
    npm install react-bootstrap@next bootstrap@5.0.2
-   
+   ```
    in the app import: 
    
 5. SETUP Google oAuth
-   
-   GOOGLE oAUTH
-
-   STEPS
 
    1. Install ngrok 
 
@@ -89,10 +88,6 @@ In the terminal run command
 
  <img width="635" alt="Screen Shot 2021-08-17 at 12 39 51 PM" src="https://user-images.githubusercontent.com/68921168/129789790-03b92f70-3973-40b5-9209-0b199985e5ea.png">
 
-   
-   2. copy paste
-
-     /ngrok https..... (light blue highlighted code) to
 
    ```jsx
    /ngrok https://ea8ed5584d5b.ngrok.io 
