@@ -23,17 +23,18 @@ This app depends on
   4. React Bootstrap
   5. Google simple maps API
   6. Google oAuth 
-  7. Flask Restful API
-  8. Python 3.7
+  
   **Deployment:**
-  9. Google Firebase
- 10. Heroku
+  7. Google Firebase
+ 
    
 ### SETUP
 In the terminal run command 
-  npm install
+1. SET UP React 
+   
+   npm install
 
-1. SET UP Material UI 
+2. SET UP Material UI 
 
    npm install @material-ui/core
 
@@ -47,15 +48,64 @@ In the terminal run command
 
    npm start
 
-2. SET UP Date 
+3. SET UP Date 
 
    npm i date-fns
    
    npm audit fix --force
    
-3. SET UP REACT BOOTSTRAP
+4. SET UP REACT BOOTSTRAP
    
    npm install react-bootstrap@next bootstrap@5.0.2
    
-   in the app import
+   in the app import: 
+   
+5. SETUP Google oAuth
+   
+   GOOGLE oAUTH
+
+   STEPS
+
+   1. Install ngrok 
+
+   [https://dashboard.ngrok.com/get-started/setup](https://dashboard.ngrok.com/get-started/setup)
+
+   [ngrok - secure introspectable tunnels to localhost](https://dashboard.ngrok.com/get-started/setup)
+
+   1. terminal cmd 
+
+   ```jsx
+   % cd ngrok
+   % ngrok
+
+   ```
+
+   Forwarding address is generated
+
+   ![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/752c49ee-d690-4999-a9b4-2c9c74cccc9b/Screen_Shot_2021-07-30_at_3.08.47_PM.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/752c49ee-d690-4999-a9b4-2c9c74cccc9b/Screen_Shot_2021-07-30_at_3.08.47_PM.png)
+
+   1. copy paste the blue code into google credentials page - create credentials (dropdown oAuth) basically add the ngrok forwarding address in the URI and authorized js origins and authorised redirect URI
+
+   ![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/640f0e9d-e12c-4fee-94e9-e68132fe81e1/Screen_Shot_2021-07-30_at_3.11.12_PM.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/640f0e9d-e12c-4fee-94e9-e68132fe81e1/Screen_Shot_2021-07-30_at_3.11.12_PM.png)
+
+   1. copy paste
+
+     /ngrok https..... (light blue highlighted code) to
+
+   ```jsx
+   /ngrok https://ea8ed5584d5b.ngrok.io 
+   (this code will change everytime ngrok is opened)
+   ```
+
+   1. start the react server
+
+   ```jsx
+   npm run start
+   ```
+
+**LEARNING**
+
+Safari is not reliable when it comes to testing front end - use google chrome
+
+when using incognito mode you need to enable the cookies in react otherwise the google authentication will give error since google chrome has cookies disabled by default
    
