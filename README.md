@@ -80,7 +80,7 @@ In the terminal run command
 
    [ngrok - secure introspectable tunnels to localhost](https://dashboard.ngrok.com/get-started/setup)
 
-   1. terminal cmd 
+   2. terminal cmd 
 
    ```jsx
    % cd ngrok
@@ -93,7 +93,7 @@ In the terminal run command
 <img width="654" alt="Screen Shot 2021-08-17 at 12 40 24 PM" src="https://user-images.githubusercontent.com/68921168/129789830-2c75fd8b-c986-47cf-b028-c45e3f43f782.png">
 
    
-   1. copy paste the blue code into google credentials page - create credentials (dropdown oAuth) basically add the ngrok forwarding address in the URI and authorized js origins and authorised redirect URI
+   3. copy paste the blue code into google credentials page - create credentials (dropdown oAuth) basically add the ngrok forwarding address in the URI and authorized js origins and authorised redirect URI
 
  <img width="635" alt="Screen Shot 2021-08-17 at 12 39 51 PM" src="https://user-images.githubusercontent.com/68921168/129789790-03b92f70-3973-40b5-9209-0b199985e5ea.png">
 
@@ -103,7 +103,7 @@ In the terminal run command
    (this code will change everytime ngrok is opened)
    ```
 
-   3. start the react server
+  4. start the react server
 
    ```jsx
    npm run start
