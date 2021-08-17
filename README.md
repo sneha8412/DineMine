@@ -123,7 +123,7 @@ Safari is not reliable when it comes to testing front end - use google chrome
 
 when using incognito mode you need to enable the cookies in react otherwise the google authentication will give error since google chrome has cookies disabled by default
 
-6. **SETUP GOOGLE SIMPLEMAPS**
+6. **SETUP GOOGLE MAPS**
 
 8. **SETUP GOOGLE GEOLOCATION**
  
