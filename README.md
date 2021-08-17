@@ -1,8 +1,6 @@
-### <img width="634" alt="Screen Shot 2021-08-17 at 12 44 53 PM" src="https://user-images.githubusercontent.com/68921168/129790716-a556f432-f1fd-4753-bd6d-3d50397669b9.png">
-Dinemine 
-   is a multi-page web-app 
+### Dinemine is a multi-page web-app 
 
-There are two aspects of this app -
+There are two aspects of this app:
 
 1) **Hosting-**  Allows a person with a talent for cooking and a space for hosting guests, to register on the app as a host and sell their unique dining experiences. As the pandemic hit, many restaurants also closed and there might be many people who might want to use their skills and run a small business. This app will allow them to do that.
 The host will be able to create a hosting account
