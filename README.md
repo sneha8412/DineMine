@@ -82,13 +82,14 @@ In the terminal run command
 
    Forwarding address is generated
 
-   https://www.notion.so/Google-oAuth-tutorial-47d0aa5213f0433cb21659f7dbb3763d#fd8239732aa54b43be3957e92c433d55
-
-   1. copy paste the blue code into google credentials page - create credentials (dropdown oAuth) basically add the ngrok forwarding address in the URI and authorized js origins and authorised redirect URI
-
-   https://www.notion.so/Google-oAuth-tutorial-47d0aa5213f0433cb21659f7dbb3763d#36615d67fa09448c9f9d7232ed21df08
+   ![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/752c49ee-d690-4999-a9b4-2c9c74cccc9b/Screen_Shot_2021-07-30_at_3.08.47_PM.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/752c49ee-d690-4999-a9b4-2c9c74cccc9b/Screen_Shot_2021-07-30_at_3.08.47_PM.png)
    
-   1. copy paste
+
+   1. copy paste the blue code into google credentials page - create credentials (dropdown oAuth) basically add the ngrok forwarding address in          the URI and authorized js origins and authorised redirect URI
+
+   ![https://s3-us-west-2.amazonaws.com/secure.notion-static.com/640f0e9d-e12c-4fee-94e9-e68132fe81e1/Screen_Shot_2021-07-30_at_3.11.12_PM.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/640f0e9d-e12c-4fee-94e9-e68132fe81e1/Screen_Shot_2021-07-30_at_3.11.12_PM.png)
+   
+   2. copy paste
 
      /ngrok https..... (light blue highlighted code) to
 
@@ -97,7 +98,7 @@ In the terminal run command
    (this code will change everytime ngrok is opened)
    ```
 
-   1. start the react server
+   3. start the react server
 
    ```jsx
    npm run start
