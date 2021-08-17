@@ -31,16 +31,17 @@ This app depends on
   3. React Material UI
   4. React Bootstrap
   5. Google simple maps API
-  6. Google oAuth 
+  6. Google Geolocater
+  7. Google oAuth 
   
   **Deployment:**
-  7. Google Firebase
+  8. Google Firebase
  
    
 ### SETUP - This project was bootstrapped with Create React App
 In the terminal run command 
 
-1. SET UP React 
+1. **SET UP React** 
    ```jsx
    npm install
    
@@ -50,7 +51,7 @@ In the terminal run command
    
    npm start
    ```
-2. SET UP Material UI 
+2. **SET UP Material UI **
    ```jsx
    npm install @material-ui/core
 
@@ -65,21 +66,21 @@ In the terminal run command
    npm start
    ```
 
-3. SET UP Date 
+3. **SET UP Javascript Date Utility** 
    ```jsx
    npm i date-fns
    
    npm audit fix --force
    ```
    
-4. SET UP REACT BOOTSTRAP
+4. **SET UP REACT BOOTSTRAP**
    ```jsx
    
    npm install react-bootstrap@next bootstrap@5.0.2
    ```
    in the app import: 
    
-5. SETUP Google oAuth
+5. **SETUP Google oAuth**
 
    1. Install ngrok 
 
@@ -121,4 +122,40 @@ In the terminal run command
 Safari is not reliable when it comes to testing front end - use google chrome
 
 when using incognito mode you need to enable the cookies in react otherwise the google authentication will give error since google chrome has cookies disabled by default
-   
+
+6. **SETUP GOOGLE SIMPLEMAPS**
+
+8. **SETUP GOOGLE GEOLOCATION**
+ 
+10. **SETUP FIREBASE DEPLOYMENT**
+    resource: https://www.geeksforgeeks.org/how-to-deploy-react-project-on-firebase/
+
+    Install Firebase CLI
+
+    to host your site with Firebase Hosting, you need the Firebase CLI (a command line tool).
+
+    Run the following npm command to install the CLI or update to the latest  CLI version
+
+    ```python
+    npm install -g firebase-too
+    ```
+    
+  <img width="632" alt="Screen Shot 2021-08-17 at 1 06 43 PM" src="https://user-images.githubusercontent.com/68921168/129793165-621774e8-e6e4-41ca-bc83-ede40e3ab76f.png">
+
+  SELECT THE HOSTING OPTION
+  <img width="637" alt="Screen Shot 2021-08-17 at 1 07 16 PM" src="https://user-images.githubusercontent.com/68921168/129793234-19b7d420-97c1-483e-84eb-441f3110a497.png">
+
+  to the 3 questions - answer is build, yes, no
+  <img width="634" alt="Screen Shot 2021-08-17 at 1 09 02 PM" src="https://user-images.githubusercontent.com/68921168/129793491-85ed0d60-f295-4d69-a743-fc5e0c3070f8.png">
+
+  ```jsx
+  npm run build
+
+  firebase deploy
+
+  ```
+
+  <img width="643" alt="Screen Shot 2021-08-17 at 1 11 16 PM" src="https://user-images.githubusercontent.com/68921168/129793705-b6d4a0aa-8ef2-4d15-be08-0eead06d92c1.png">
+
+
+
