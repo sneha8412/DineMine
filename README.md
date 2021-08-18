@@ -34,6 +34,7 @@ This app uses:
   6. Google oAuth 
   
   **Deployment:**
+  
   7. Google Firebase
  
    
