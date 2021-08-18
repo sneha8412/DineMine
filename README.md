@@ -161,9 +161,9 @@ when using incognito mode you need to enable the cookies in react otherwise the 
   <img width="634" alt="Screen Shot 2021-08-17 at 1 09 02 PM" src="https://user-images.githubusercontent.com/68921168/129793491-85ed0d60-f295-4d69-a743-fc5e0c3070f8.png">
 
   ```jsx
-  npm run build
+  $ npm run build
 
-  firebase deploy
+  $ firebase deploy
 
   ```
 
