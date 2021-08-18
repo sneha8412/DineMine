@@ -153,9 +153,11 @@ when using incognito mode you need to enable the cookies in react otherwise the 
   <img width="632" alt="Screen Shot 2021-08-17 at 1 06 43 PM" src="https://user-images.githubusercontent.com/68921168/129793165-621774e8-e6e4-41ca-bc83-ede40e3ab76f.png">
 
   SELECT THE HOSTING OPTION
+  
   <img width="637" alt="Screen Shot 2021-08-17 at 1 07 16 PM" src="https://user-images.githubusercontent.com/68921168/129793234-19b7d420-97c1-483e-84eb-441f3110a497.png">
 
   to the 3 questions - answer is build, yes, no
+  
   <img width="634" alt="Screen Shot 2021-08-17 at 1 09 02 PM" src="https://user-images.githubusercontent.com/68921168/129793491-85ed0d60-f295-4d69-a743-fc5e0c3070f8.png">
 
   ```jsx
